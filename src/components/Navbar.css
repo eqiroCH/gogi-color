@@ -1,0 +1,117 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  transition: background 0.35s var(--ease), border-color 0.35s var(--ease), backdrop-filter 0.35s var(--ease);
+}
+
+.nav.is-scrolled {
+  background: rgba(12, 10, 9, 0.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 4.75rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.logo-mark {
+  width: 2.15rem;
+  height: 2.15rem;
+  border: 1px solid var(--copper);
+  color: var(--copper);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.logo-text em {
+  font-style: italic;
+  color: var(--copper);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.nav-links button {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nav-links button:hover {
+  color: var(--cream);
+}
+
+.nav-cta {
+  padding: 0.7rem 1.15rem;
+}
+
+.nav-toggle {
+  display: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  position: relative;
+}
+
+.nav-toggle span {
+  position: absolute;
+  left: 0.45rem;
+  right: 0.45rem;
+  height: 1px;
+  background: var(--cream);
+  transition: 0.25s ease;
+}
+
+.nav-toggle span:first-child { top: 0.9rem; }
+.nav-toggle span:last-child { top: 1.35rem; }
+.nav-toggle.is-open span:first-child { top: 1.12rem; transform: rotate(45deg); }
+.nav-toggle.is-open span:last-child { top: 1.12rem; transform: rotate(-45deg); }
+
+@media (max-width: 860px) {
+  .nav-toggle { display: block; }
+
+  .nav-links {
+    position: absolute;
+    inset: 4.75rem 0 auto;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 1rem 1.25rem 1.5rem;
+    background: rgba(12, 10, 9, 0.96);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links.is-open { display: flex; }
+
+  .nav-links button,
+  .nav-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 0;
+  }
+}

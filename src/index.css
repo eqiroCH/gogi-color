@@ -1,0 +1,242 @@
+:root {
+  --bg: #0c0a09;
+  --bg-elevated: #141210;
+  --bg-card: #1c1917;
+  --bg-soft: #231f1c;
+  --copper: #c9a27c;
+  --copper-light: #e4c9a8;
+  --copper-dark: #a8845e;
+  --rose: #b76e79;
+  --cream: #f4efe8;
+  --text: #ebe6df;
+  --muted: #9a9086;
+  --line: rgba(201, 162, 124, 0.22);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --shadow-copper: 0 10px 36px rgba(201, 162, 124, 0.22);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius: 14px;
+  --container: 1200px;
+  --section: clamp(5rem, 11vw, 8.5rem);
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 0.9rem;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  color: var(--cream);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--copper-light);
+}
+
+.section-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  color: var(--muted);
+  max-width: 38rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 0.95rem 1.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: transform 0.35s var(--ease), background 0.35s var(--ease), color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--copper-light), var(--copper-dark));
+  color: var(--bg);
+  box-shadow: var(--shadow-copper);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(201, 162, 124, 0.32);
+}
+
+.btn-ghost {
+  border: 1px solid var(--line);
+  color: var(--cream);
+  background: rgba(12, 10, 9, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.btn-ghost:hover {
+  border-color: var(--copper);
+  color: var(--copper-light);
+  transform: translateY(-2px);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fadeUp 0.9s var(--ease) forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+::selection {
+  background: var(--copper);
+  color: var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--copper-dark);
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
+}
+
+.legal-page {
+  min-height: 100vh;
+  padding: calc(var(--section) + 2rem) 0 var(--section);
+}
+
+.legal-page .back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--copper);
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.legal-page h2 {
+  margin-bottom: 2rem;
+}
+
+.legal-section {
+  margin-bottom: 2rem;
+}
+
+.legal-section h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.7rem;
+  color: var(--cream);
+}
+
+.legal-section h4 {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  margin: 1rem 0 0.4rem;
+}
+
+.legal-section p,
+.legal-section li {
+  color: var(--muted);
+  max-width: 42rem;
+}
+
+.legal-section a {
+  color: var(--copper);
+}
+
+.legal-section ul {
+  padding-left: 1.2rem;
+  margin: 0.6rem 0 1rem;
+}
+
+@media (max-width: 720px) {
+  .container {
+    width: min(var(--container), calc(100% - 1.5rem));
+  }
+}

@@ -1,0 +1,40 @@
+.faq {
+  padding: var(--section) 0;
+  background: var(--bg-elevated);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 3rem;
+}
+
+.faq-list article {
+  border-bottom: 1px solid var(--line);
+  padding: 1.15rem 0;
+}
+
+.faq-list button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  font-size: 1.05rem;
+  color: var(--cream);
+}
+
+.faq-list button span {
+  color: var(--copper);
+  font-size: 1.3rem;
+}
+
+.faq-list p {
+  color: var(--muted);
+  padding: 0.7rem 0 0.3rem;
+  max-width: 38rem;
+}
+
+@media (max-width: 800px) {
+  .faq-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
