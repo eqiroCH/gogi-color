@@ -8,14 +8,18 @@ function Impressum({ onBack }) {
           <h3>Angaben gemäss Schweizer Recht</h3>
           <p>
             <strong>Gogi Color</strong><br />
-            Colorist für Haarfarbe<br />
-            Kontakt über Instagram:{' '}
+            Malerfirma<br />
+            Zürich, Schweiz<br />
+            E-Mail:{' '}
+            <a href="mailto:info@gogicolor.ch">info@gogicolor.ch</a>
+            <br />
+            Instagram:{' '}
             <a href="https://www.instagram.com/gogi_color/" target="_blank" rel="noopener noreferrer">
               @gogi_color
             </a>
           </p>
           <p>
-            Vollständige Anbieterangaben (Name, Adresse, UID) werden nachgeliefert, sobald sie vom Betreiber bestätigt sind.
+            Vollständige Anbieterangaben (Name, Strasse, UID) werden ergänzt, sobald sie vom Betreiber bestätigt sind.
           </p>
         </div>
         <div className="legal-section">
@@ -28,16 +32,14 @@ function Impressum({ onBack }) {
         <div className="legal-section">
           <h3>Haftung für Links</h3>
           <p>
-            Diese Website verlinkt auf Instagram und andere Dritte. Für deren Inhalte sind ausschliesslich
-            die jeweiligen Betreiber verantwortlich.
+            Externe Links (z. B. Instagram) liegen in der Verantwortung der jeweiligen Betreiber.
           </p>
         </div>
         <div className="legal-section">
           <h3>Urheberrecht</h3>
           <p>
             Texte und Gestaltung dieser Website unterliegen dem schweizerischen Urheberrecht.
-            Stimmungsbilder stammen von Unsplash und unterliegen den jeweiligen Lizenzbedingungen.
-            Kundenarbeiten von Gogi Color sind auf Instagram zu finden.
+            Stimmungsbilder stammen von Unsplash. Kundenprojekte von Gogi Color findest du auf Instagram.
           </p>
         </div>
       </div>

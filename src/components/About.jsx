@@ -6,31 +6,30 @@ function About() {
       <div className="container about-grid">
         <div className="about-visual">
           <img
-            src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=80"
-            alt="Haarfarbe in der Arbeit – Farbauftrag am Haar"
+            src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1400&q=80"
+            alt="Maler streicht eine Wand mit Rolle"
           />
-          <div className="about-note">
-            <strong>@gogi_color</strong>
-            <span>Aktuelle Arbeiten auf Instagram</span>
+          <div className="about-badge">
+            <strong>Zürich</strong>
+            <span>Schweiz</span>
           </div>
         </div>
         <div className="about-copy">
-          <span className="section-label">Über Gogi</span>
-          <h2 className="section-title">Nicht mehr Farbe.<br /><em>Die richtige.</em></h2>
+          <span className="section-label">Über Gogi Color</span>
+          <h2 className="section-title">Farbe mit Handwerk.</h2>
           <p>
-            Gogi Color steht für Haarfarbe, die sitzt – nicht laut um ihrer selbst willen,
-            sondern klar, gepflegt und auf dich abgestimmt. Hinter dem Stuhl zählt das Auge
-            für Nuancen, Übergänge und das, was deine Haare wirklich vertragen.
+            Gogi Color ist deine Malerfirma in Zürich. Wir streichen Wohnungen, Häuser und
+            Gewerbeflächen – innen und aussen – mit Fokus auf saubere Untergründe, präzise
+            Kanten und Farben, die lange halten.
           </p>
           <p>
-            Die Arbeit lebt von Beratung. Wir schauen uns Ausgangslage, Wunschbild und
-            Pflege an – und entscheiden gemeinsam, welcher Weg realistisch und schön ist.
-            Termine entstehen persönlich, aktuell über Instagram.
+            Du bekommst eine klare Offerte, zuverlässige Termine und Arbeit, bei der am Ende
+            nicht der ganze Raum nach Renovation aussieht. Fragen? Schreib uns einfach.
           </p>
           <ul>
-            <li>Individuelle Farbberatung vor jeder Behandlung</li>
-            <li>Schonende Techniken, Fokus auf Haargesundheit</li>
-            <li>Transparente Einschätzung statt leerer Versprechen</li>
+            <li>Sorgfältige Abdeckung und Vorbereitung</li>
+            <li>Qualitätsfarben für Innen und Aussen</li>
+            <li>Transparente Offerten ohne Überraschungen</li>
           </ul>
         </div>
       </div>

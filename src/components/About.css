@@ -1,11 +1,12 @@
 .about {
   padding: var(--section) 0;
+  background: var(--bg-alt);
 }
 
 .about-grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 4rem;
+  gap: 3.5rem;
   align-items: center;
 }
 
@@ -15,66 +16,59 @@
 
 .about-visual img {
   width: 100%;
-  height: 38rem;
+  height: 34rem;
   object-fit: cover;
   border-radius: 22px;
-  filter: saturate(0.92) contrast(1.04);
 }
 
-.about-note {
+.about-badge {
   position: absolute;
-  left: 1.2rem;
-  bottom: 1.2rem;
-  padding: 0.9rem 1.1rem;
-  background: rgba(12, 10, 9, 0.78);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--line);
+  left: 1.1rem;
+  bottom: 1.1rem;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.92);
   border-radius: 12px;
+  box-shadow: var(--shadow);
 }
 
-.about-note strong {
+.about-badge strong {
   display: block;
-  color: var(--copper-light);
   font-family: var(--font-display);
-  font-weight: 500;
+  font-size: 1.15rem;
 }
 
-.about-note span {
+.about-badge span {
   color: var(--muted);
   font-size: 0.85rem;
 }
 
-.about-copy .section-title {
-  margin-bottom: 1.3rem;
-}
-
 .about-copy p {
   color: var(--muted);
-  margin-bottom: 1rem;
+  margin-bottom: 0.95rem;
 }
 
 .about-copy ul {
-  margin-top: 1.6rem;
-  display: grid;
-  gap: 0.7rem;
+  margin-top: 1.5rem;
   list-style: none;
+  display: grid;
+  gap: 0.65rem;
 }
 
 .about-copy li {
-  padding-left: 1.2rem;
   position: relative;
-  color: var(--cream);
+  padding-left: 1.15rem;
+  font-weight: 500;
 }
 
 .about-copy li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0.7rem;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--copper);
+  top: 0.55rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--paint);
 }
 
 @media (max-width: 900px) {
@@ -82,5 +76,5 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  .about-visual img { height: 26rem; }
+  .about-visual img { height: 24rem; }
 }

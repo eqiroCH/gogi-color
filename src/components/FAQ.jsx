@@ -3,24 +3,24 @@ import './FAQ.css'
 
 const items = [
   {
-    q: 'Wie buche ich einen Termin?',
-    a: 'Aktuell ausschliesslich über Instagram. Schreib Gogi direkt unter @gogi_color – mit Wunschdatum, Haarlänge und einem Foto der aktuellen Farbe, wenn möglich.',
+    q: 'Wo arbeitet ihr?',
+    a: 'Schwerpunkt Zürich und Umgebung. Bei grösseren Projekten sprechen wir den Radius gerne individuell ab.',
   },
   {
-    q: 'Wie lange dauert eine Farbbehandlung?',
-    a: 'Je nach Technik zwischen zwei und sechs Stunden. Balayage und Korrekturen brauchen mehr Zeit. Die genaue Dauer klären wir in der Anfrage.',
+    q: 'Wie bekomme ich eine Offerte?',
+    a: 'Schreib an info@gogicolor.ch oder per Instagram @gogi_color – mit Adresse, ungefährer Fläche und Fotos, falls vorhanden.',
   },
   {
-    q: 'Was kostet die Farbe?',
-    a: 'Preise hängen von Länge, Dichte, Ausgangslage und Wunschfarbe ab. Du erhältst eine transparente Einschätzung vor der Behandlung – keine Überraschung an der Kasse.',
+    q: 'Streicht ihr auch Fassaden?',
+    a: 'Ja. Innen- und Aussenmalerei gehören zum Angebot – inkl. Vorbereitung und wettergeeigneter Systeme.',
   },
   {
-    q: 'Kann jede Wunschfarbe umgesetzt werden?',
-    a: 'Nicht immer in einer Sitzung. Gogi sagt dir ehrlich, was die Haare mitmachen – und welcher Weg über eine oder mehrere Behandlungen sinnvoll ist.',
+    q: 'Muss ich die Wohnung leer räumen?',
+    a: 'Nicht alles. Wir decken Möbel und Böden ab. Für freie Wände hilft es, wenn der Raum zugänglich ist.',
   },
   {
-    q: 'Muss ich die Haare vor dem Termin waschen?',
-    a: 'In der Regel nicht am selben Tag. Ungewaschenes Haar (1–2 Tage) schützt die Kopfhaut bei Blondierungen. Details bekommst du mit der Terminbestätigung.',
+    q: 'Wie lange dauert ein Auftrag?',
+    a: 'Je nach Fläche und Untergrund: ein Zimmer oft an einem Tag, grössere Wohnungen oder Fassaden entsprechend länger. Die Dauer steht in der Offerte.',
   },
 ]
 
@@ -32,7 +32,7 @@ function FAQ() {
       <div className="container faq-grid">
         <div>
           <span className="section-label">FAQ</span>
-          <h2 className="section-title">Bevor du <em>schreibst</em></h2>
+          <h2 className="section-title">Kurze Antworten.</h2>
         </div>
         <div className="faq-list">
           {items.map((item, index) => (

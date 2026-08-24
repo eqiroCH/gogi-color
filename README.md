@@ -1,6 +1,9 @@
 # Gogi Color
 
-Website für [Gogi Color](https://www.instagram.com/gogi_color/) – Colorist für individuelle Haarfarbe.
+Website für [Gogi Color](https://www.instagram.com/gogi_color/) – Malerfirma in Zürich.
+
+- E-Mail: info@gogicolor.ch
+- Instagram: [@gogi_color](https://www.instagram.com/gogi_color/)
 
 ## Lokal starten
 
@@ -15,5 +18,3 @@ npm run dev
 npm run build
 npm run preview
 ```
-
-Die Seite ist als statischer Vite/React-Onepager gebaut (wie Osteria dei Poeti) und kann direkt auf Netlify deployed werden.

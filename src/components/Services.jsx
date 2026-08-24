@@ -3,33 +3,33 @@ import './Services.css'
 const services = [
   {
     num: '01',
-    title: 'Signature Balayage',
-    text: 'Freihand-Technik für weiche Übergänge und Licht, das natürlich wirkt – nie streifig, immer persönlich.',
+    title: 'Innenmalerei',
+    text: 'Wände, Decken und Detailflächen – sauber abgedeckt, gleichmässig gestrichen, fertig zum Einziehen.',
   },
   {
     num: '02',
-    title: 'Blond & Highlights',
-    text: 'Kühle, warme oder honey-blonde Nuancen. Aufgebaut, damit die Haarstruktur geschützt bleibt.',
+    title: 'Aussenmalerei',
+    text: 'Fassaden und Aussenflächen wetterfest und optisch frisch. Langlebig und fürs Schweizer Klima gedacht.',
   },
   {
     num: '03',
-    title: 'Color & Ansatz',
-    text: 'Vollfarbe, Ansatz und Glossing – präzise, haltbar und abgestimmt auf deinen Alltag.',
+    title: 'Renovation',
+    text: 'Altbau, Umbau oder Auffrischung: Spachteln, schleifen, grundieren und neu streichen aus einer Hand.',
   },
   {
     num: '04',
-    title: 'Farbkorrektur',
-    text: 'Wenn die letzte Farbe nicht sitzt: ruhige Analyse, realistischer Plan, sauberes Ergebnis.',
+    title: 'Spachtelarbeiten',
+    text: 'Unebene Untergründe, Risse und Übergänge – vorbereitet, damit die Farbe wirklich sitzt.',
   },
   {
     num: '05',
-    title: 'Gloss & Toner',
-    text: 'Frische, Glanz und die richtige Reflexion – ohne grosse Transformation, mit sichtbarer Wirkung.',
+    title: 'Farbberatung',
+    text: 'Welche Farbe wirkt in welchem Raum? Wir helfen bei der Auswahl – klar und ohne Schnickschnack.',
   },
   {
     num: '06',
-    title: 'Schnitt & Finish',
-    text: 'Die Form trägt die Farbe. Schnitt, Föhnfrisur und Styling, damit das Resultat komplett ist.',
+    title: 'Gewerbe & Privat',
+    text: 'Wohnungen, Häuser, Büros und Ladenflächen in Zürich und Umgebung – zuverlässig und termingerecht.',
   },
 ]
 
@@ -39,9 +39,9 @@ function Services() {
       <div className="container">
         <div className="services-head">
           <span className="section-label">Leistungen</span>
-          <h2 className="section-title">Farbe als <em>Handwerk</em></h2>
+          <h2 className="section-title">Malerarbeit, die hält.</h2>
           <p className="section-lead">
-            Kein Katalog-Look. Jede Farbe entsteht nach Beratung – zu Teint, Haarstruktur und dem Leben, das du führst.
+            Von der ersten Beratung bis zur letzten Rolle – saubere Ausführung und ein Ergebnis, auf das du stolz bist.
           </p>
         </div>
         <div className="services-grid">

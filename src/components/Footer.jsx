@@ -8,20 +8,21 @@ function Footer({ onNavigate, setPage }) {
       <div className="container footer-grid">
         <div>
           <div className="footer-brand">
-            <span className="logo-mark">G</span>
+            <span className="logo-mark" aria-hidden="true" />
             <strong>Gogi Color</strong>
           </div>
-          <p>Colorist für individuelle Haarfarbe. Termine über Instagram.</p>
+          <p>Malerfirma in Zürich – Innen, Aussen, Renovation.</p>
         </div>
         <div>
           <h4>Seite</h4>
           <button onClick={() => onNavigate('#services')}>Leistungen</button>
-          <button onClick={() => onNavigate('#about')}>Über Gogi</button>
-          <button onClick={() => onNavigate('#gallery')}>Galerie</button>
-          <button onClick={() => onNavigate('#contact')}>Termin</button>
+          <button onClick={() => onNavigate('#about')}>Über uns</button>
+          <button onClick={() => onNavigate('#gallery')}>Projekte</button>
+          <button onClick={() => onNavigate('#contact')}>Anfrage</button>
         </div>
         <div>
           <h4>Kontakt</h4>
+          <a href="mailto:info@gogicolor.ch">info@gogicolor.ch</a>
           <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">Instagram @gogi_color</a>
           <button onClick={() => { setPage('impressum'); window.scrollTo(0, 0) }}>Impressum</button>
           <button onClick={() => { setPage('datenschutz'); window.scrollTo(0, 0) }}>Datenschutz</button>

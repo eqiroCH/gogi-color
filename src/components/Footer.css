@@ -1,70 +1,66 @@
 .footer {
-  padding: 3.5rem 0 1.5rem;
-  border-top: 1px solid var(--line);
-  background: #090807;
+  padding: 3.2rem 0 1.4rem;
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr;
   gap: 2rem;
-  padding-bottom: 2.4rem;
+  padding-bottom: 2.2rem;
 }
 
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 0.8rem;
+  gap: 0.65rem;
+  margin-bottom: 0.7rem;
+  color: var(--white);
 }
 
 .footer-brand .logo-mark {
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid var(--copper);
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  color: var(--copper);
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--paint) 0 45%, var(--ochre) 45% 100%);
 }
 
 .footer-brand strong {
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.15rem;
 }
 
 .footer p,
 .footer a,
-.footer button,
-.footer span {
-  color: var(--muted);
+.footer button {
   display: block;
   text-align: left;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.35rem;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .footer h4 {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--copper);
-  margin-bottom: 0.9rem;
+  color: var(--ochre);
+  margin-bottom: 0.8rem;
 }
 
 .footer a:hover,
 .footer button:hover {
-  color: var(--cream);
+  color: var(--white);
 }
 
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--line);
-  font-size: 0.82rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.85rem;
 }
 
 @media (max-width: 720px) {
