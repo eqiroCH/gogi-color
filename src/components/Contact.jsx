@@ -38,8 +38,7 @@ function Contact() {
   return (
     <section id="kontakt" className="section">
       <div className="container">
-        <div className="section-head reveal">
-          <span className="kicker">Kontakt</span>
+        <div className="section-head">
           <h2 className="section-title">Offerte anfragen</h2>
           <p className="section-lead">
             Beschreiben Sie kurz Ihr Vorhaben. Wir melden uns für eine Besichtigung und
@@ -48,7 +47,7 @@ function Contact() {
         </div>
 
         <div className="contact-grid">
-          <aside className="contact-info reveal">
+          <aside className="contact-info">
             <h3>So erreichen Sie uns</h3>
             <ul>
               <li>
@@ -75,7 +74,7 @@ function Contact() {
             </ul>
           </aside>
 
-          <form className="contact-form reveal" onSubmit={onSubmit}>
+          <form className="contact-form" onSubmit={onSubmit}>
             <div className="form-row">
               <label>
                 Name *

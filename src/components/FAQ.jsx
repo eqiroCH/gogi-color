@@ -34,12 +34,11 @@ function FAQ() {
   return (
     <section id="faq" className="section section-grey">
       <div className="container faq-wrap">
-        <div className="section-head reveal">
-          <span className="kicker">Häufige Fragen</span>
-          <h2 className="section-title">Gut zu wissen</h2>
+        <div className="section-head">
+          <h2 className="section-title">Häufige Fragen</h2>
         </div>
 
-        <div className="faq-list reveal">
+        <div className="faq-list">
           {items.map((item, index) => {
             const isOpen = open === index
             return (

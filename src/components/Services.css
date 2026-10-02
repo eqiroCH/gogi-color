@@ -6,35 +6,29 @@
 
 .service-card {
   background: var(--white);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  border-bottom: 4px solid var(--gold);
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.service-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
 }
 
 .service-card img {
   width: 100%;
-  aspect-ratio: 10 / 7;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
 }
 
 .service-body {
-  padding: 1.4rem 1.5rem 1.6rem;
+  padding: 1.2rem 1.3rem 1.4rem;
 }
 
 .service-body h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
 }
 
 .service-body p {
   color: var(--muted);
+  font-size: 0.95rem;
 }
 
 @media (max-width: 960px) {

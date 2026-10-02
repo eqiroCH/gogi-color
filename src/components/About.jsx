@@ -13,20 +13,15 @@ function About() {
   return (
     <section id="ueber-uns" className="section">
       <div className="container about-grid">
-        <div className="about-image reveal">
+        <div className="about-image">
           <img
             src="https://images.unsplash.com/photo-1595814433015-e6f5ce69614e?auto=format&fit=crop&w=1000&h=1100&q=75"
             alt="Maler mit Pinsel und Farbroller bei der Arbeit"
             loading="lazy"
           />
-          <div className="about-badge">
-            <strong>Zürich</strong>
-            <span>&amp; Umgebung</span>
-          </div>
         </div>
 
-        <div className="about-text reveal">
-          <span className="kicker">Über uns</span>
+        <div className="about-text">
           <h2 className="section-title">Ihr Malergeschäft aus Zürich</h2>
           <p>
             Gogi Color ist ein Malerbetrieb aus Zürich. Wir streichen Wohnungen, Häuser,

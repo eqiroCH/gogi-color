@@ -15,9 +15,8 @@ function Projects() {
   return (
     <section id="impressionen" className="section">
       <div className="container">
-        <div className="section-head reveal">
-          <span className="kicker">Impressionen</span>
-          <h2 className="section-title">Frische Farbe für jeden Raum</h2>
+        <div className="section-head">
+          <h2 className="section-title">Impressionen</h2>
           <p className="section-lead">
             Aktuelle Arbeiten, Vorher-Nachher-Bilder und Baustellen-Videos finden Sie auf
             unserem Instagram-Kanal.
@@ -26,11 +25,11 @@ function Projects() {
 
         <div className="photo-grid">
           {photos.map(([id, alt]) => (
-            <img key={id} className="reveal" src={img(id)} alt={alt} loading="lazy" />
+            <img key={id} src={img(id)} alt={alt} loading="lazy" />
           ))}
         </div>
 
-        <div className="photo-cta reveal">
+        <div className="photo-cta">
           <a className="btn btn-dark" href={INSTAGRAM} target="_blank" rel="noopener noreferrer">
             <Instagram /> Mehr auf Instagram @gogi_color
           </a>

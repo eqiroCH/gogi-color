@@ -11,14 +11,13 @@ function Process() {
   return (
     <section id="ablauf" className="section section-grey">
       <div className="container">
-        <div className="section-head reveal">
-          <span className="kicker">So läuft es ab</span>
-          <h2 className="section-title">In 4 Schritten zum neuen Anstrich</h2>
+        <div className="section-head">
+          <h2 className="section-title">So läuft ein Auftrag ab</h2>
         </div>
 
         <ol className="process-grid">
           {steps.map(([title, text], i) => (
-            <li key={title} className="process-step reveal">
+            <li key={title} className="process-step">
               <span className="process-num">{i + 1}</span>
               <h3>{title}</h3>
               <p>{text}</p>

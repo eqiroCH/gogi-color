@@ -39,8 +39,7 @@ function Services() {
   return (
     <section id="leistungen" className="section section-grey">
       <div className="container">
-        <div className="section-head reveal">
-          <span className="kicker">Was wir machen</span>
+        <div className="section-head">
           <h2 className="section-title">Unsere Leistungen</h2>
           <p className="section-lead">
             Vom einzelnen Zimmer bis zur ganzen Fassade – wir übernehmen Vorbereitung,
@@ -50,7 +49,7 @@ function Services() {
 
         <div className="services-grid">
           {services.map((s) => (
-            <article key={s.title} className="service-card reveal">
+            <article key={s.title} className="service-card">
               <img src={s.image} alt={s.title} loading="lazy" />
               <div className="service-body">
                 <h3>{s.title}</h3>

@@ -1,38 +1,15 @@
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
-  gap: clamp(2.5rem, 6vw, 5rem);
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
-}
-
-.about-image {
-  position: relative;
 }
 
 .about-image img {
   width: 100%;
-  aspect-ratio: 10 / 11;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: var(--radius);
-}
-
-.about-badge {
-  position: absolute;
-  right: -1rem;
-  bottom: 2rem;
-  padding: 1.1rem 1.5rem;
-  background: var(--gold);
-  color: var(--white);
-  border-radius: var(--radius);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-}
-
-.about-badge strong {
-  display: block;
-  font-family: var(--font-head);
-  font-size: 1.8rem;
-  text-transform: uppercase;
-  line-height: 1;
 }
 
 .about-text > p {
@@ -42,39 +19,27 @@
 
 .about-list {
   list-style: none;
-  margin: 1.6rem 0 2rem;
+  margin: 1.4rem 0 1.8rem;
   display: grid;
-  gap: 0.7rem;
+  gap: 0.55rem;
 }
 
 .about-list li {
   display: flex;
-  gap: 0.7rem;
+  gap: 0.6rem;
   align-items: flex-start;
-  font-weight: 500;
 }
 
 .about-list svg {
   flex-shrink: 0;
-  width: 1.4rem;
-  height: 1.4rem;
-  padding: 0.2rem;
-  margin-top: 0.15rem;
-  border-radius: 50%;
-  background: var(--gold);
-  color: var(--white);
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.25rem;
+  color: var(--gold);
 }
 
 @media (max-width: 900px) {
   .about-grid {
     grid-template-columns: 1fr;
-  }
-
-  .about-image {
-    max-width: 32rem;
-  }
-
-  .about-badge {
-    right: 1rem;
   }
 }

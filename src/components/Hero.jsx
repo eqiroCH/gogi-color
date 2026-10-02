@@ -2,10 +2,10 @@ import { Shield, Clock, Doc, Check } from './Icons'
 import './Hero.css'
 
 const usps = [
-  [Shield, 'Saubere Arbeit', 'Alles abgedeckt und abgeklebt'],
-  [Clock, 'Termintreu', 'Abgemachte Termine gelten'],
-  [Doc, 'Faire Offerte', 'Klar und ohne Überraschungen'],
-  [Check, 'Innen & Aussen', 'Alles aus einer Hand'],
+  [Shield, 'Saubere Arbeit'],
+  [Clock, 'Termintreu'],
+  [Doc, 'Faire Offerte'],
+  [Check, 'Innen & Aussen'],
 ]
 
 function Hero() {
@@ -21,11 +21,10 @@ function Hero() {
           fetchpriority="high"
         />
         <div className="container hero-content">
-          <span className="kicker">Ihr Maler in Zürich</span>
-          <h1>Malerarbeiten innen und aussen – sauber &amp; zuverlässig</h1>
+          <h1>Ihr Maler in Zürich</h1>
           <p>
-            Gogi Color ist Ihr Malergeschäft für Wohnungen, Häuser, Fassaden und Gewerbe
-            in Zürich und Umgebung.
+            Innenmalerei, Fassaden, Renovationen und Spachtelarbeiten für Private,
+            Verwaltungen und Firmen in Zürich und Umgebung.
           </p>
           <div className="hero-actions">
             <button className="btn btn-gold" onClick={() => scrollTo('#kontakt')}>Offerte anfragen</button>
@@ -36,13 +35,10 @@ function Hero() {
 
       <div className="usp-bar">
         <div className="container usp-grid">
-          {usps.map(([Icon, title, text]) => (
+          {usps.map(([Icon, title]) => (
             <div key={title} className="usp">
-              <span className="usp-icon"><Icon /></span>
-              <div>
-                <strong>{title}</strong>
-                <small>{text}</small>
-              </div>
+              <Icon />
+              <span>{title}</span>
             </div>
           ))}
         </div>

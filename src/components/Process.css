@@ -6,40 +6,36 @@
 }
 
 .process-step {
-  position: relative;
-  background: var(--white);
-  padding: 2rem 1.5rem 1.8rem;
-  border-radius: var(--radius);
-  border-top: 4px solid var(--gold);
   text-align: center;
 }
 
 .process-num {
   display: grid;
   place-items: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  margin: 0 auto 1rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  margin: 0 auto 0.9rem;
   border-radius: 50%;
-  background: var(--dark);
+  background: var(--gold);
   color: var(--white);
-  font-family: var(--font-head);
-  font-size: 1.6rem;
-  font-weight: 800;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .process-step h3 {
-  font-size: 1.45rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
 }
 
 .process-step p {
   color: var(--muted);
+  font-size: 0.95rem;
 }
 
 @media (max-width: 900px) {
   .process-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 2rem 1.5rem;
   }
 }
 

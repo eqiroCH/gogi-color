@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import useReveal from './useReveal'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -15,8 +14,6 @@ import Datenschutz from './components/Datenschutz'
 
 function App() {
   const [page, setPage] = useState('home')
-  useReveal([page])
-
   const goHome = (hash) => {
     setPage('home')
     requestAnimationFrame(() => {
