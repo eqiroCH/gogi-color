@@ -1,36 +1,58 @@
 import './About.css'
 
+const promises = [
+  {
+    title: 'Sauber',
+    text: 'Böden, Möbel und Fenster werden abgedeckt und abgeklebt. Wir hinterlassen frische Wände – keinen Farbnebel.',
+  },
+  {
+    title: 'Pünktlich',
+    text: 'Abgemachte Termine gelten. Du weisst vorher, wann wir kommen und wann wir fertig sind.',
+  },
+  {
+    title: 'Fair',
+    text: 'Klare Offerte vor Arbeitsbeginn. Keine versteckten Positionen, keine Überraschung auf der Rechnung.',
+  },
+]
+
 function About() {
   return (
     <section id="about" className="about">
       <div className="container about-grid">
-        <div className="about-visual">
+        <div className="about-visual reveal">
           <img
-            src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1400&q=80"
-            alt="Maler streicht eine Wand mit Rolle"
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&h=1200&q=80"
+            alt="Frisch gestrichener Wohnraum in warmem Grau"
+            loading="lazy"
           />
-          <div className="about-badge">
-            <strong>Zürich</strong>
-            <span>Schweiz</span>
-          </div>
+          <span className="tape about-tape">Handwerk aus Zürich</span>
         </div>
+
         <div className="about-copy">
-          <span className="section-label">Über Gogi Color</span>
-          <h2 className="section-title">Farbe mit Handwerk.</h2>
-          <p>
-            Gogi Color ist deine Malerfirma in Zürich. Wir streichen Wohnungen, Häuser und
-            Gewerbeflächen – innen und aussen – mit Fokus auf saubere Untergründe, präzise
-            Kanten und Farben, die lange halten.
-          </p>
-          <p>
-            Du bekommst eine klare Offerte, zuverlässige Termine und Arbeit, bei der am Ende
-            nicht der ganze Raum nach Renovation aussieht. Fragen? Schreib uns einfach.
-          </p>
-          <ul>
-            <li>Sorgfältige Abdeckung und Vorbereitung</li>
-            <li>Qualitätsfarben für Innen und Aussen</li>
-            <li>Transparente Offerten ohne Überraschungen</li>
-          </ul>
+          <div className="reveal">
+            <p className="eyebrow">Über Gogi Color</p>
+            <h2 className="section-title">
+              Maler mit <span className="hand">Leidenschaft.</span>
+            </h2>
+            <p className="about-text">
+              Gogi Color ist ein Malerbetrieb aus Zürich. Wir streichen Wohnungen, Häuser,
+              Treppenhäuser und Gewerbeflächen – mit Blick fürs Detail und dem Anspruch, dass
+              jede Kante sitzt.
+            </p>
+            <p className="about-text">
+              Du hast einen festen Ansprechpartner – vom ersten Besichtigungstermin bis zur
+              Abnahme. Kurze Wege, klare Absprachen.
+            </p>
+          </div>
+
+          <div className="promises">
+            {promises.map((p, i) => (
+              <article key={p.title} className="promise reveal" style={{ transitionDelay: `${i * 0.08}s` }}>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

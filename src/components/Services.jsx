@@ -1,35 +1,36 @@
+import { Roller, Facade, Spatula, Brush, Palette, Office } from './Icons'
 import './Services.css'
 
 const services = [
   {
-    num: '01',
+    icon: Roller,
     title: 'Innenmalerei',
-    text: 'Wände, Decken und Detailflächen – sauber abgedeckt, gleichmässig gestrichen, fertig zum Einziehen.',
+    text: 'Wände, Decken, Türen und Zargen. Möbel und Böden werden sauber abgedeckt – am Ende bleibt nur frische Farbe.',
   },
   {
-    num: '02',
-    title: 'Aussenmalerei',
-    text: 'Fassaden und Aussenflächen wetterfest und optisch frisch. Langlebig und fürs Schweizer Klima gedacht.',
+    icon: Facade,
+    title: 'Fassaden & Aussen',
+    text: 'Fassaden, Balkone und Aussenflächen mit wetterfesten Systemen, die das Schweizer Klima aushalten.',
   },
   {
-    num: '03',
+    icon: Spatula,
+    title: 'Spachtel & Untergrund',
+    text: 'Risse, Löcher und unebene Flächen werden gespachtelt und geschliffen – die Basis für ein perfektes Finish.',
+  },
+  {
+    icon: Brush,
     title: 'Renovation',
-    text: 'Altbau, Umbau oder Auffrischung: Spachteln, schleifen, grundieren und neu streichen aus einer Hand.',
+    text: 'Auffrischen nach Auszug, Umbau oder Altbau. Wir übernehmen Vorbereitung, Anstrich und Endreinigung der Fläche.',
   },
   {
-    num: '04',
-    title: 'Spachtelarbeiten',
-    text: 'Unebene Untergründe, Risse und Übergänge – vorbereitet, damit die Farbe wirklich sitzt.',
-  },
-  {
-    num: '05',
+    icon: Palette,
     title: 'Farbberatung',
-    text: 'Welche Farbe wirkt in welchem Raum? Wir helfen bei der Auswahl – klar und ohne Schnickschnack.',
+    text: 'Welche Farbe passt zu Licht, Raum und Möbeln? Wir beraten vor Ort mit echten Farbmustern.',
   },
   {
-    num: '06',
-    title: 'Gewerbe & Privat',
-    text: 'Wohnungen, Häuser, Büros und Ladenflächen in Zürich und Umgebung – zuverlässig und termingerecht.',
+    icon: Office,
+    title: 'Gewerbe & Verwaltungen',
+    text: 'Büros, Läden und Mietobjekte – planbar ausgeführt, auch abgestimmt auf Öffnungszeiten und Mieterwechsel.',
   },
 ]
 
@@ -37,19 +38,26 @@ function Services() {
   return (
     <section id="services" className="services">
       <div className="container">
-        <div className="services-head">
-          <span className="section-label">Leistungen</span>
-          <h2 className="section-title">Malerarbeit, die hält.</h2>
+        <div className="services-head reveal">
+          <div>
+            <p className="eyebrow">Leistungen</p>
+            <h2 className="section-title">
+              Alles rund um <span className="hand">Farbe.</span>
+            </h2>
+          </div>
           <p className="section-lead">
-            Von der ersten Beratung bis zur letzten Rolle – saubere Ausführung und ein Ergebnis, auf das du stolz bist.
+            Vom einzelnen Zimmer bis zur ganzen Fassade. Wir kümmern uns um Vorbereitung,
+            Ausführung und Abschluss – du musst nur die Farbe aussuchen.
           </p>
         </div>
-        <div className="services-grid">
-          {services.map((item) => (
-            <article key={item.num} className="service-card">
-              <span>{item.num}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
+
+        <div className="services-list">
+          {services.map(({ icon: Icon, title, text }, i) => (
+            <article key={title} className="service-row reveal" style={{ transitionDelay: `${i * 0.05}s` }}>
+              <span className="service-num">0{i + 1}</span>
+              <span className="service-icon"><Icon /></span>
+              <h3>{title}</h3>
+              <p>{text}</p>
             </article>
           ))}
         </div>

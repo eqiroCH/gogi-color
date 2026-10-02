@@ -1,10 +1,14 @@
 import { useState } from 'react'
+import useReveal from './useReveal'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Marquee from './components/Marquee'
 import Services from './components/Services'
+import ColorRoom from './components/ColorRoom'
+import Projects from './components/Projects'
 import About from './components/About'
-import Gallery from './components/Gallery'
 import Process from './components/Process'
+import CallToAction from './components/CallToAction'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -13,6 +17,7 @@ import Datenschutz from './components/Datenschutz'
 
 function App() {
   const [page, setPage] = useState('home')
+  useReveal([page])
 
   const goHome = (hash) => {
     setPage('home')
@@ -25,6 +30,11 @@ function App() {
     })
   }
 
+  const openPage = (name) => {
+    setPage(name)
+    window.scrollTo(0, 0)
+  }
+
   return (
     <>
       <Navbar page={page} onNavigate={goHome} />
@@ -34,16 +44,19 @@ function App() {
         {page === 'home' && (
           <>
             <Hero />
+            <Marquee />
             <Services />
+            <ColorRoom />
+            <Projects />
             <About />
-            <Gallery />
             <Process />
+            <CallToAction />
             <FAQ />
             <Contact />
           </>
         )}
       </main>
-      <Footer onNavigate={goHome} setPage={setPage} />
+      <Footer onNavigate={goHome} openPage={openPage} />
     </>
   )
 }

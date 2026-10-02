@@ -1,0 +1,46 @@
+.logo-wordmark {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  color: var(--ink);
+}
+
+.logo-stroke {
+  position: absolute;
+  left: -0.3rem;
+  bottom: -0.15rem;
+  width: calc(100% + 0.6rem);
+  height: 1rem;
+  overflow: visible;
+}
+
+.logo-stroke path {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 7;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.logo-gogi {
+  position: relative;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.55rem;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.logo-color {
+  position: relative;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.45rem;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.logo-wordmark.is-light {
+  color: var(--paper);
+}

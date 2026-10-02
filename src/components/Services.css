@@ -1,55 +1,107 @@
 .services {
   padding: var(--section) 0;
-  background: var(--bg);
 }
 
 .services-head {
-  max-width: 38rem;
-  margin-bottom: 3rem;
-}
-
-.services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: end;
+  margin-bottom: 3.5rem;
 }
 
-.service-card {
-  padding: 1.6rem 1.4rem 1.7rem;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  min-height: 14.5rem;
-  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease);
+.services-list {
+  border-top: 1.5px solid var(--ink);
 }
 
-.service-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--paint);
+.service-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem 3.5rem minmax(12rem, 1fr) 1.3fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.7rem 1rem;
+  border-bottom: 1px solid var(--line);
+  isolation: isolate;
+  overflow: hidden;
 }
 
-.service-card span {
-  display: block;
-  font-family: var(--font-display);
+.service-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--ease);
+}
+
+.service-row:hover::before {
+  transform: scaleX(1);
+}
+
+.service-row:hover {
+  color: var(--paper);
+}
+
+.service-row:hover p {
+  color: rgba(251, 248, 242, 0.72);
+}
+
+.service-num {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--ochre-deep);
-  margin-bottom: 1.2rem;
+  color: var(--gold);
 }
 
-.service-card h3 {
-  font-size: 1.35rem;
-  margin-bottom: 0.6rem;
+.service-icon {
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  color: var(--ink);
+  transition: background 0.4s var(--ease);
 }
 
-.service-card p {
+.service-row:hover .service-icon {
+  background: var(--gold);
+}
+
+.service-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.service-row h3 {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  letter-spacing: -0.03em;
+}
+
+.service-row p {
   color: var(--muted);
-  font-size: 0.98rem;
+  transition: color 0.4s var(--ease);
 }
 
 @media (max-width: 900px) {
-  .services-grid { grid-template-columns: 1fr 1fr; }
-}
+  .services-head {
+    grid-template-columns: 1fr;
+  }
 
-@media (max-width: 620px) {
-  .services-grid { grid-template-columns: 1fr; }
+  .service-row {
+    grid-template-columns: 3.2rem 1fr;
+    gap: 0.6rem 1rem;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .service-num {
+    display: none;
+  }
+
+  .service-row p {
+    grid-column: 2;
+  }
 }

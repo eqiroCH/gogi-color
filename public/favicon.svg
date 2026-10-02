@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gogi Color">
-  <rect width="64" height="64" rx="12" fill="#1a1f24"/>
-  <rect x="14" y="18" width="36" height="28" rx="3" fill="#e8a54b"/>
-  <rect x="18" y="22" width="28" height="20" rx="2" fill="#f4f1eb"/>
-  <path d="M22 38h8v4h-8z" fill="#2f6fed"/>
+  <circle cx="32" cy="32" r="31" fill="#f1e8d8"/>
+  <path d="M14 38c8-6 20-9 36-7" stroke="#b8873f" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <text x="32" y="33" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#151515">G</text>
 </svg>

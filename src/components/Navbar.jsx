@@ -1,5 +1,15 @@
 import { useEffect, useState } from 'react'
+import Logo from './Logo'
+import { Arrow } from './Icons'
 import './Navbar.css'
+
+const links = [
+  ['#services', 'Leistungen'],
+  ['#farbwelt', 'Farbwelt'],
+  ['#projekte', 'Projekte'],
+  ['#about', 'Über uns'],
+  ['#faq', 'FAQ'],
+]
 
 function Navbar({ page, onNavigate }) {
   const [scrolled, setScrolled] = useState(false)
@@ -12,6 +22,10 @@ function Navbar({ page, onNavigate }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+  }, [open])
+
   const go = (hash) => {
     setOpen(false)
     if (page !== 'home') onNavigate(hash)
@@ -19,32 +33,44 @@ function Navbar({ page, onNavigate }) {
   }
 
   return (
-    <header className={`nav ${scrolled ? 'is-scrolled' : ''}`}>
+    <header className={`nav ${scrolled || page !== 'home' ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="container nav-inner">
-        <button className="logo" onClick={() => onNavigate()} aria-label="Gogi Color Startseite">
-          <span className="logo-mark" aria-hidden="true" />
-          <span className="logo-text">Gogi Color</span>
+        <button className="nav-logo" onClick={() => { setOpen(false); onNavigate() }} aria-label="Gogi Color Startseite">
+          <Logo />
         </button>
 
-        <nav className={`nav-links ${open ? 'is-open' : ''}`}>
-          <button onClick={() => go('#services')}>Leistungen</button>
-          <button onClick={() => go('#about')}>Über uns</button>
-          <button onClick={() => go('#gallery')}>Projekte</button>
-          <button onClick={() => go('#process')}>Ablauf</button>
-          <button onClick={() => go('#contact')}>Anfrage</button>
-          <a className="btn btn-primary nav-cta" href="mailto:info@gogicolor.ch">
-            Offerte anfragen
-          </a>
+        <nav className="nav-links" aria-label="Hauptnavigation">
+          {links.map(([hash, label]) => (
+            <button key={hash} onClick={() => go(hash)}>{label}</button>
+          ))}
         </nav>
 
+        <button className="btn btn-ink nav-cta" onClick={() => go('#kontakt')}>
+          Offerte anfragen
+          <Arrow />
+        </button>
+
         <button
-          className={`nav-toggle ${open ? 'is-open' : ''}`}
+          className="nav-toggle"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Menü"
+          aria-label={open ? 'Menü schliessen' : 'Menü öffnen'}
           aria-expanded={open}
         >
           <span />
           <span />
+        </button>
+      </div>
+
+      <div className="nav-mobile" aria-hidden={!open}>
+        {links.map(([hash, label], i) => (
+          <button key={hash} onClick={() => go(hash)} style={{ transitionDelay: `${0.05 * i + 0.1}s` }}>
+            <span>0{i + 1}</span>
+            {label}
+          </button>
+        ))}
+        <button className="btn btn-gold" onClick={() => go('#kontakt')}>
+          Offerte anfragen
+          <Arrow />
         </button>
       </div>
     </header>

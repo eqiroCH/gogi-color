@@ -1,12 +1,12 @@
 .about {
   padding: var(--section) 0;
-  background: var(--bg-alt);
+  background: var(--plaster-2);
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 3.5rem;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
   align-items: center;
 }
 
@@ -16,65 +16,61 @@
 
 .about-visual img {
   width: 100%;
-  height: 34rem;
+  aspect-ratio: 5 / 6;
   object-fit: cover;
-  border-radius: 22px;
-}
-
-.about-badge {
-  position: absolute;
-  left: 1.1rem;
-  bottom: 1.1rem;
-  padding: 0.85rem 1rem;
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 12px;
+  border-radius: 24px 24px 200px 24px;
   box-shadow: var(--shadow);
 }
 
-.about-badge strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
+.about-tape {
+  left: -0.6rem;
+  bottom: 2rem;
+  transform: rotate(-5deg);
 }
 
-.about-badge span {
+.about-text {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 1.06rem;
+  margin-bottom: 0.9rem;
+  max-width: 36rem;
 }
 
-.about-copy p {
-  color: var(--muted);
-  margin-bottom: 0.95rem;
-}
-
-.about-copy ul {
-  margin-top: 1.5rem;
-  list-style: none;
+.promises {
   display: grid;
-  gap: 0.65rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+  margin-top: 2rem;
 }
 
-.about-copy li {
-  position: relative;
-  padding-left: 1.15rem;
-  font-weight: 500;
+.promise {
+  padding: 1.3rem 1.2rem;
+  background: var(--paper);
+  border-radius: 18px;
+  border-top: 5px solid var(--gold);
 }
 
-.about-copy li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55rem;
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-  background: var(--paint);
+.promise h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.promise p {
+  font-size: 0.92rem;
+  color: var(--muted);
 }
 
 @media (max-width: 900px) {
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
-  .about-visual img { height: 24rem; }
+
+  .about-visual {
+    max-width: 28rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .promises {
+    grid-template-columns: 1fr;
+  }
 }
