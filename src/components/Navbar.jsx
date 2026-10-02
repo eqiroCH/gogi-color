@@ -1,26 +1,19 @@
 import { useEffect, useState } from 'react'
 import Logo from './Logo'
-import { Arrow } from './Icons'
+import { Mail, Instagram, Pin } from './Icons'
 import './Navbar.css'
 
 const links = [
-  ['#services', 'Leistungen'],
-  ['#farbwelt', 'Farbwelt'],
-  ['#projekte', 'Projekte'],
-  ['#about', 'Über uns'],
+  ['#leistungen', 'Leistungen'],
+  ['#ueber-uns', 'Über uns'],
+  ['#ablauf', 'Ablauf'],
+  ['#impressionen', 'Impressionen'],
   ['#faq', 'FAQ'],
+  ['#kontakt', 'Kontakt'],
 ]
 
 function Navbar({ page, onNavigate }) {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -33,45 +26,53 @@ function Navbar({ page, onNavigate }) {
   }
 
   return (
-    <header className={`nav ${scrolled || page !== 'home' ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
-      <div className="container nav-inner">
-        <button className="nav-logo" onClick={() => { setOpen(false); onNavigate() }} aria-label="Gogi Color Startseite">
-          <Logo />
-        </button>
+    <header className={`header ${open ? 'is-open' : ''}`}>
+      <div className="topbar">
+        <div className="container topbar-inner">
+          <span><Pin /> Zürich &amp; Umgebung</span>
+          <div>
+            <a href="mailto:info@gogicolor.ch"><Mail /> info@gogicolor.ch</a>
+            <a href="https://www.instagram.com/gogi_color/" target="_blank" rel="noopener noreferrer">
+              <Instagram /> @gogi_color
+            </a>
+          </div>
+        </div>
+      </div>
 
-        <nav className="nav-links" aria-label="Hauptnavigation">
+      <div className="nav">
+        <div className="container nav-inner">
+          <button className="nav-logo" onClick={() => { setOpen(false); onNavigate() }} aria-label="Gogi Color Startseite">
+            <Logo />
+          </button>
+
+          <nav className="nav-links" aria-label="Hauptnavigation">
+            {links.map(([hash, label]) => (
+              <button key={hash} onClick={() => go(hash)}>{label}</button>
+            ))}
+          </nav>
+
+          <button className="btn btn-gold nav-cta" onClick={() => go('#kontakt')}>
+            Offerte anfragen
+          </button>
+
+          <button
+            className="nav-toggle"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? 'Menü schliessen' : 'Menü öffnen'}
+            aria-expanded={open}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+
+        <div className="nav-mobile" aria-hidden={!open}>
           {links.map(([hash, label]) => (
             <button key={hash} onClick={() => go(hash)}>{label}</button>
           ))}
-        </nav>
-
-        <button className="btn btn-ink nav-cta" onClick={() => go('#kontakt')}>
-          Offerte anfragen
-          <Arrow />
-        </button>
-
-        <button
-          className="nav-toggle"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? 'Menü schliessen' : 'Menü öffnen'}
-          aria-expanded={open}
-        >
-          <span />
-          <span />
-        </button>
-      </div>
-
-      <div className="nav-mobile" aria-hidden={!open}>
-        {links.map(([hash, label], i) => (
-          <button key={hash} onClick={() => go(hash)} style={{ transitionDelay: `${0.05 * i + 0.1}s` }}>
-            <span>0{i + 1}</span>
-            {label}
-          </button>
-        ))}
-        <button className="btn btn-gold" onClick={() => go('#kontakt')}>
-          Offerte anfragen
-          <Arrow />
-        </button>
+          <button className="btn btn-gold" onClick={() => go('#kontakt')}>Offerte anfragen</button>
+        </div>
       </div>
     </header>
   )

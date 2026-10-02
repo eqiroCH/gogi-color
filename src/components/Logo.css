@@ -1,46 +1,57 @@
-.logo-wordmark {
-  position: relative;
+.logo {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.2rem;
-  color: var(--ink);
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--dark);
+  text-align: left;
 }
 
-.logo-stroke {
-  position: absolute;
-  left: -0.3rem;
-  bottom: -0.15rem;
-  width: calc(100% + 0.6rem);
-  height: 1rem;
-  overflow: visible;
-}
-
-.logo-stroke path {
-  fill: none;
-  stroke: var(--gold);
-  stroke-width: 7;
-  stroke-linecap: round;
-  opacity: 0.55;
-}
-
-.logo-gogi {
-  position: relative;
-  font-family: var(--font-display);
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background: var(--gold-light);
+  border: 2px solid var(--gold);
+  font-family: var(--font-head);
+  font-size: 1.5rem;
   font-weight: 800;
-  font-size: 1.55rem;
-  letter-spacing: -0.04em;
+  color: var(--gold-dark);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
   line-height: 1;
 }
 
-.logo-color {
-  position: relative;
-  font-family: var(--font-hand);
-  font-weight: 700;
-  font-size: 1.45rem;
-  line-height: 1;
+.logo-text strong {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.logo-text em {
+  font-style: normal;
   color: var(--gold);
 }
 
-.logo-wordmark.is-light {
-  color: var(--paper);
+.logo-text small {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.logo-light {
+  color: var(--white);
+}
+
+.logo-light .logo-text small {
+  color: rgba(255, 255, 255, 0.6);
 }

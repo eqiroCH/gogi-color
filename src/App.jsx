@@ -2,9 +2,7 @@ import { useState } from 'react'
 import useReveal from './useReveal'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Marquee from './components/Marquee'
 import Services from './components/Services'
-import ColorRoom from './components/ColorRoom'
 import Projects from './components/Projects'
 import About from './components/About'
 import Process from './components/Process'
@@ -44,13 +42,11 @@ function App() {
         {page === 'home' && (
           <>
             <Hero />
-            <Marquee />
             <Services />
-            <ColorRoom />
-            <Projects />
             <About />
-            <Process />
             <CallToAction />
+            <Process />
+            <Projects />
             <FAQ />
             <Contact />
           </>

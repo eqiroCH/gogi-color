@@ -83,6 +83,27 @@ export const Instagram = () => (
   </svg>
 )
 
+export const Clock = () => (
+  <svg {...base}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7v5l3 2" />
+  </svg>
+)
+
+export const Shield = () => (
+  <svg {...base}>
+    <path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z" />
+    <path d="M8.5 12l2.5 2.5 4.5-5" />
+  </svg>
+)
+
+export const Doc = () => (
+  <svg {...base}>
+    <path d="M6 3h8l4 4v14H6z" />
+    <path d="M14 3v4h4M9 12h6M9 16h6" />
+  </svg>
+)
+
 export const Pin = () => (
   <svg {...base}>
     <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" />

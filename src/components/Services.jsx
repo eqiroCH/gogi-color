@@ -1,63 +1,61 @@
-import { Roller, Facade, Spatula, Brush, Palette, Office } from './Icons'
 import './Services.css'
+
+const img = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&h=560&q=75`
 
 const services = [
   {
-    icon: Roller,
     title: 'Innenmalerei',
-    text: 'Wände, Decken, Türen und Zargen. Möbel und Böden werden sauber abgedeckt – am Ende bleibt nur frische Farbe.',
+    text: 'Wände, Decken, Türen und Fensterrahmen. Möbel und Böden werden sauber abgedeckt.',
+    image: img('1581858726788-75bc0f6a952d'),
   },
   {
-    icon: Facade,
-    title: 'Fassaden & Aussen',
-    text: 'Fassaden, Balkone und Aussenflächen mit wetterfesten Systemen, die das Schweizer Klima aushalten.',
+    title: 'Fassaden',
+    text: 'Fassadenanstriche mit wetterfesten Farben – für Einfamilienhäuser und Mehrfamilienhäuser.',
+    image: img('1574359411659-15573a27fd0c'),
   },
   {
-    icon: Spatula,
-    title: 'Spachtel & Untergrund',
-    text: 'Risse, Löcher und unebene Flächen werden gespachtelt und geschliffen – die Basis für ein perfektes Finish.',
+    title: 'Spachtel- & Gipsarbeiten',
+    text: 'Löcher und Risse ausbessern, spachteln und schleifen – für einen glatten Untergrund.',
+    image: img('1611021061285-16c871740efa'),
   },
   {
-    icon: Brush,
-    title: 'Renovation',
-    text: 'Auffrischen nach Auszug, Umbau oder Altbau. Wir übernehmen Vorbereitung, Anstrich und Endreinigung der Fläche.',
+    title: 'Renovationen',
+    text: 'Auffrischen bei Umzug, Mieterwechsel oder Umbau – inklusive Vorbereitung und Abschluss.',
+    image: img('1630699144867-37acec97df5a'),
   },
   {
-    icon: Palette,
     title: 'Farbberatung',
-    text: 'Welche Farbe passt zu Licht, Raum und Möbeln? Wir beraten vor Ort mit echten Farbmustern.',
+    text: 'Wir beraten Sie vor Ort und zeigen Ihnen Farbmuster, damit die Farbe zu Raum und Licht passt.',
+    image: img('1525909002-1b05e0c869d8'),
   },
   {
-    icon: Office,
     title: 'Gewerbe & Verwaltungen',
-    text: 'Büros, Läden und Mietobjekte – planbar ausgeführt, auch abgestimmt auf Öffnungszeiten und Mieterwechsel.',
+    text: 'Büros, Läden, Treppenhäuser und Mietobjekte – termingerecht und mit wenig Störung.',
+    image: img('1595846519845-68e298c2edd8'),
   },
 ]
 
 function Services() {
   return (
-    <section id="services" className="services">
+    <section id="leistungen" className="section section-grey">
       <div className="container">
-        <div className="services-head reveal">
-          <div>
-            <p className="eyebrow">Leistungen</p>
-            <h2 className="section-title">
-              Alles rund um <span className="hand">Farbe.</span>
-            </h2>
-          </div>
+        <div className="section-head reveal">
+          <span className="kicker">Was wir machen</span>
+          <h2 className="section-title">Unsere Leistungen</h2>
           <p className="section-lead">
-            Vom einzelnen Zimmer bis zur ganzen Fassade. Wir kümmern uns um Vorbereitung,
-            Ausführung und Abschluss – du musst nur die Farbe aussuchen.
+            Vom einzelnen Zimmer bis zur ganzen Fassade – wir übernehmen Vorbereitung,
+            Malerarbeiten und Aufräumen.
           </p>
         </div>
 
-        <div className="services-list">
-          {services.map(({ icon: Icon, title, text }, i) => (
-            <article key={title} className="service-row reveal" style={{ transitionDelay: `${i * 0.05}s` }}>
-              <span className="service-num">0{i + 1}</span>
-              <span className="service-icon"><Icon /></span>
-              <h3>{title}</h3>
-              <p>{text}</p>
+        <div className="services-grid">
+          {services.map((s) => (
+            <article key={s.title} className="service-card reveal">
+              <img src={s.image} alt={s.title} loading="lazy" />
+              <div className="service-body">
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
             </article>
           ))}
         </div>
