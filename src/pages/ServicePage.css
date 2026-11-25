@@ -51,10 +51,6 @@
 }
 
 /* .info-box p färbt sonst auch den Kleintitel grau */
-.service-page-info .eyebrow {
-  color: var(--accent-text);
-}
-
 .service-page-info__title {
   max-width: 24ch;
 }
@@ -88,8 +84,14 @@
   }
 }
 
-/* ---- Weitere Leistungen: 4 Karten in einer Reihe (ab 64em) ---------------- */
+/* ---- Weitere Leistungen: 2×2, ab 80em 4 Karten in einer Reihe -------------- */
 @media (min-width: 64em) {
+  .service-page-related .service-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 80em) {
   .service-page-related .service-cards {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }

@@ -68,7 +68,7 @@ export const about = {
 // Ablauf – wird auf der Startseite und auf den Leistungsseiten gezeigt
 export const process = {
   eyebrow: 'Ablauf',
-  title: 'In vier Schritten zur frisch gestrichenen Wand.',
+  title: 'In vier Schritten zum frischen Anstrich.',
   lead: 'Klar geregelt und ohne Überraschungen: Sie wissen jederzeit, was als Nächstes passiert und wer Ihr Ansprechpartner ist.',
   steps: [
     ['Anfrage', 'Sie beschreiben uns kurz Ihr Vorhaben – per Formular, E-Mail oder Instagram, gerne mit Fotos.'],

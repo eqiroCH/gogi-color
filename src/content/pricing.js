@@ -10,7 +10,7 @@ export const pricing = {
     ['Heizkörper', 'rund CHF 60 pro Stück', 'Standardgrösse'],
     ['Fassade', 'rund CHF 25–27 pro m²', 'zzgl. Gerüst und Vorbereitung'],
   ],
-  source: ['Houzy, «Kosten Maler» (Stand 2026)', 'https://www.houzy.ch/post/kosten-maler'],
+  source: ['Houzy, «Kosten Maler» (Stand\u00a02026)', 'https://www.houzy.ch/post/kosten-maler'],
 }
 
 export const costFactors = [

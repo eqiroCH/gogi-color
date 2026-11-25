@@ -34,7 +34,8 @@ export function useOfferForm() {
     if (!stepChanged.current) return
     headingRef.current?.focus({ preventScroll: true })
     const top = containerRef.current?.getBoundingClientRect().top ?? 0
-    if (top < 0) containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const headerOffset = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0
+    if (top < headerOffset) containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [step])
 
   // Vorschau-URLs der Fotos beim Verlassen freigeben

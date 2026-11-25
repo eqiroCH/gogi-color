@@ -1,8 +1,10 @@
 // Fixe Aktionsleiste unten auf Mobile/Tablet (< 64em): «Offerte anfragen» plus
 // Anruf/WhatsApp/E-Mail je nach gesetzten Feldern in site.js. Auf /offerte aus.
 // Der Platzhalter (.mobile-bar-spacer) nach dem Footer sorgt dafür, dass die
-// Leiste am Seitenende nichts verdeckt.
+// Leiste am Seitenende nichts verdeckt. Solange das eingebettete Formular (#kontakt)
+// im Bild ist, tritt die Leiste zurück, damit sie es nicht überdeckt.
 // Props: path – aktuelle Route
+import { useEffect, useState } from 'react'
 import { IconMail, IconPhone, IconWhatsApp } from './Icons'
 import { OFFER_HREF } from './nav'
 import { hero } from '../content/home'
@@ -10,6 +12,16 @@ import { site, telHref, whatsappHref } from '../site'
 import './MobileBar.css'
 
 export default function MobileBar({ path }) {
+  const [tucked, setTucked] = useState(false)
+
+  useEffect(() => {
+    const target = document.getElementById('kontakt')
+    if (!target || !('IntersectionObserver' in window)) return undefined
+    const observer = new IntersectionObserver(([entry]) => setTucked(entry.isIntersecting), { rootMargin: '0px 0px -40% 0px' })
+    observer.observe(target)
+    return () => observer.disconnect()
+  }, [path])
+
   if (path === OFFER_HREF) return null
 
   const actions = [
@@ -28,7 +40,7 @@ export default function MobileBar({ path }) {
   return (
     <>
       <div className="mobile-bar-spacer" aria-hidden="true" />
-      <nav className="mobile-bar" aria-label="Schnellkontakt">
+      <nav className={`mobile-bar${tucked ? ' is-tucked' : ''}`} aria-label="Schnellkontakt" inert={tucked}>
         <a href={OFFER_HREF} className="btn btn--primary mobile-bar__cta">
           Offerte anfragen
         </a>

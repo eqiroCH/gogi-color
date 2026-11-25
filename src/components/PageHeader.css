@@ -68,8 +68,16 @@
 }
 
 .page-header__title {
-  max-width: 20ch;
   font-size: var(--fs-h1);
+  /* «balance» stellt auf dem Handy einzelne Wörter auf eigene Zeilen (z. B. «STWEG») */
+  text-wrap: pretty;
+}
+
+@media (min-width: 48em) {
+  .page-header__title {
+    max-width: 20ch;
+    text-wrap: balance;
+  }
 }
 
 .page-header__actions {

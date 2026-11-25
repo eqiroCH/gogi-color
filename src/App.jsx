@@ -29,10 +29,11 @@ const pages = {
 function App({ path }) {
   const Page = pages[path] ?? NotFound
 
-  // Bei /seite#abschnitt erst nach dem Hydrieren zum Abschnitt springen
+  // Bei /seite#abschnitt nach dem Hydrieren direkt zum Abschnitt springen
+  // (ohne sanftes Scrollen, das sonst sichtbar durch die ganze Seite läuft)
   useEffect(() => {
     if (window.location.hash) {
-      document.getElementById(window.location.hash.slice(1))?.scrollIntoView()
+      document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' })
     }
   }, [])
 

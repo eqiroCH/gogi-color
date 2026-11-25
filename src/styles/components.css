@@ -530,7 +530,7 @@ a.chip:hover {
   font-size: var(--fs-h3);
 }
 
-.info-box p {
+.info-box p:not(.eyebrow) {
   color: var(--text-soft);
 }
 

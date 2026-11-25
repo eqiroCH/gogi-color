@@ -46,6 +46,16 @@
   background: var(--color-tanne);
 }
 
+.mobile-bar.is-tucked {
+  transform: translateY(110%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mobile-bar {
+    transition: transform 0.25s ease;
+  }
+}
+
 html.is-menu-open .mobile-bar {
   visibility: hidden;
 }
