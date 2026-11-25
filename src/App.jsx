@@ -1,5 +1,7 @@
+// Seitenrahmen und Routing. Jede Route wird beim Build vorgerendert (scripts/prerender.mjs)
+// und im Browser hydriert – deshalb hier keine Browser-APIs während des Renderns.
 import { useEffect } from 'react'
-import Navbar from './components/Navbar'
+import Header from './components/Header'
 import Footer from './components/Footer'
 import MobileBar from './components/MobileBar'
 import Home from './pages/Home'
@@ -36,12 +38,12 @@ function App({ path }) {
 
   return (
     <>
-      <Navbar path={path} />
-      <main>
+      <Header path={path} />
+      <main id="inhalt">
         <Page />
       </main>
       <Footer />
-      <MobileBar hidden={path === '/offerte'} />
+      <MobileBar path={path} />
     </>
   )
 }

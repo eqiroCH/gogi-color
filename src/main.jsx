@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
-import '@fontsource-variable/archivo/wdth.css'
-import './index.css'
+// Schriften (selbst gehostet über @fontsource) und globale Styles hier importieren
 import App from './App.jsx'
 import { routes, notFound, normalizePath } from './routes'
 
