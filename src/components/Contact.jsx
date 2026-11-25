@@ -1,116 +1,74 @@
-import { useState } from 'react'
-import { Mail, Instagram, Pin } from './Icons'
+import { Mail, Phone, Instagram, Pin, WhatsApp } from './Icons'
+import OfferForm from './OfferForm'
+import { site, telHref, whatsappHref } from '../site'
 import './Contact.css'
 
-const INSTAGRAM = 'https://www.instagram.com/gogi_color/'
-const services = ['Innenmalerei', 'Fassade', 'Spachtel- / Gipsarbeiten', 'Renovation', 'Farbberatung', 'Gewerbe / Verwaltung', 'Anderes']
+export function ContactList() {
+  return (
+    <ul className="contact-list">
+      {site.phone && (
+        <li>
+          <span className="contact-icon"><Phone /></span>
+          <div>
+            <small>Telefon</small>
+            <a href={telHref(site.phone)}>{site.phone}</a>
+          </div>
+        </li>
+      )}
+      {site.whatsapp && (
+        <li>
+          <span className="contact-icon"><WhatsApp /></span>
+          <div>
+            <small>WhatsApp</small>
+            <a href={whatsappHref('Hallo Gogi Color, ich hätte gerne eine Offerte.')} target="_blank" rel="noopener noreferrer">
+              Fotos senden
+            </a>
+          </div>
+        </li>
+      )}
+      <li>
+        <span className="contact-icon"><Mail /></span>
+        <div>
+          <small>E-Mail</small>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+      </li>
+      <li>
+        <span className="contact-icon"><Instagram /></span>
+        <div>
+          <small>Instagram</small>
+          <a href={site.instagram} target="_blank" rel="noopener noreferrer">{site.instagramHandle}</a>
+        </div>
+      </li>
+      <li>
+        <span className="contact-icon"><Pin /></span>
+        <div>
+          <small>Einsatzgebiet</small>
+          <a href="/einsatzgebiet">Stadt Zürich und Umgebung</a>
+        </div>
+      </li>
+    </ul>
+  )
+}
 
 function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', place: '', service: services[0], message: '' })
-
-  const onChange = (event) => {
-    setForm((prev) => ({ ...prev, [event.target.name]: event.target.value }))
-  }
-
-  const onSubmit = (event) => {
-    event.preventDefault()
-    const subject = encodeURIComponent(`Offertanfrage: ${form.service}`)
-    const body = encodeURIComponent(
-      [
-        'Guten Tag',
-        '',
-        'Ich interessiere mich für eine Offerte.',
-        '',
-        `Name: ${form.name}`,
-        form.phone ? `Telefon: ${form.phone}` : null,
-        form.place ? `Ort: ${form.place}` : null,
-        `Arbeit: ${form.service}`,
-        form.message ? `\n${form.message}` : null,
-        '',
-        'Freundliche Grüsse',
-      ]
-        .filter((line) => line !== null)
-        .join('\n'),
-    )
-    window.location.href = `mailto:info@gogicolor.ch?subject=${subject}&body=${body}`
-  }
-
   return (
-    <section id="kontakt" className="section">
-      <div className="container">
-        <div className="section-head">
+    <section id="kontakt" className="section section-dark contact">
+      <div className="container contact-grid">
+        <div className="contact-info">
+          <p className="eyebrow">Kontakt</p>
           <h2 className="section-title">Offerte anfragen</h2>
           <p className="section-lead">
-            Beschreiben Sie kurz Ihr Vorhaben. Wir melden uns für eine Besichtigung und
-            senden Ihnen danach eine Offerte.
+            Beschreiben Sie Ihr Vorhaben in vier kurzen Schritten. Wir melden uns für eine
+            Besichtigung und senden Ihnen danach eine unverbindliche Offerte.
+          </p>
+          <ContactList />
+          <p className="contact-tip">
+            <strong>Tipp:</strong> Mit ein paar Fotos und der ungefähren Fläche können wir Ihre
+            Anfrage schneller einschätzen.
           </p>
         </div>
-
-        <div className="contact-grid">
-          <aside className="contact-info">
-            <h3>So erreichen Sie uns</h3>
-            <ul>
-              <li>
-                <Mail />
-                <div>
-                  <small>E-Mail</small>
-                  <a href="mailto:info@gogicolor.ch">info@gogicolor.ch</a>
-                </div>
-              </li>
-              <li>
-                <Instagram />
-                <div>
-                  <small>Instagram</small>
-                  <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">@gogi_color</a>
-                </div>
-              </li>
-              <li>
-                <Pin />
-                <div>
-                  <small>Einsatzgebiet</small>
-                  <span>Zürich &amp; Umgebung</span>
-                </div>
-              </li>
-            </ul>
-          </aside>
-
-          <form className="contact-form" onSubmit={onSubmit}>
-            <div className="form-row">
-              <label>
-                Name *
-                <input name="name" value={form.name} onChange={onChange} required />
-              </label>
-              <label>
-                Telefon
-                <input name="phone" type="tel" value={form.phone} onChange={onChange} />
-              </label>
-            </div>
-            <div className="form-row">
-              <label>
-                Ort / Adresse
-                <input name="place" value={form.place} onChange={onChange} />
-              </label>
-              <label>
-                Art der Arbeit
-                <select name="service" value={form.service} onChange={onChange}>
-                  {services.map((s) => <option key={s}>{s}</option>)}
-                </select>
-              </label>
-            </div>
-            <label>
-              Ihre Nachricht
-              <textarea
-                name="message"
-                rows="5"
-                value={form.message}
-                onChange={onChange}
-                placeholder="Was soll gestrichen werden? Anzahl Zimmer, ungefähre Fläche, Wunschtermin …"
-              />
-            </label>
-            <button className="btn btn-gold" type="submit">Anfrage senden</button>
-            <p className="form-hint">Beim Absenden öffnet sich Ihr E-Mail-Programm mit allen Angaben.</p>
-          </form>
-        </div>
+        <OfferForm />
       </div>
     </section>
   )

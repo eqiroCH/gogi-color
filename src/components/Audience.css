@@ -1,0 +1,53 @@
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.audience-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 2rem 1.9rem;
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  background: var(--white);
+}
+
+.audience-icon {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 0.4rem;
+  border-radius: 50%;
+  background: var(--black);
+  color: var(--gold);
+}
+
+.audience-icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.audience-card h3 {
+  font-size: 1.45rem;
+}
+
+.audience-card p {
+  color: var(--muted);
+}
+
+.audience-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+@media (max-width: 900px) {
+  .audience-grid {
+    grid-template-columns: 1fr;
+  }
+}

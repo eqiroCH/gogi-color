@@ -1,44 +1,63 @@
-import { Check } from './Icons'
+import { Shield, Clock, Doc, Palette, Arrow } from './Icons'
 import './About.css'
 
-const points = [
-  'Ein fester Ansprechpartner von der Besichtigung bis zur Abnahme',
-  'Böden, Möbel und Fenster werden sorgfältig geschützt',
-  'Hochwertige Markenfarben, passend zum Untergrund',
-  'Schriftliche Offerte vor Arbeitsbeginn',
-  'Baustelle wird sauber und aufgeräumt übergeben',
+const values = [
+  [Shield, 'Sauber & geschützt', 'Böden, Möbel und Fenster werden sorgfältig abgedeckt. Die Baustelle übergeben wir aufgeräumt.'],
+  [Clock, 'Termintreu', 'Wir halten vereinbarte Termine ein und informieren Sie frühzeitig, falls sich etwas ändert.'],
+  [Doc, 'Klare Offerte', 'Sie wissen vor Arbeitsbeginn schriftlich, was gemacht wird und was es kostet.'],
+  [Palette, 'Markenfarben', 'Hochwertige Farben, abgestimmt auf Untergrund, Raum und Nutzung.'],
 ]
 
 function About() {
   return (
-    <section id="ueber-uns" className="section">
+    <section id="ueber-uns" className="section section-paper">
       <div className="container about-grid">
-        <div className="about-image">
+        <div className="about-media">
           <img
-            src="https://images.unsplash.com/photo-1595814433015-e6f5ce69614e?auto=format&fit=crop&w=1000&h=1100&q=75"
-            alt="Maler mit Pinsel und Farbroller bei der Arbeit"
+            className="about-main"
+            src="/images/about.webp"
+            alt="Maler auf einem Gerüst streicht eine Zimmerdecke"
+            width="900"
+            height="1125"
+            loading="lazy"
+          />
+          <img
+            className="about-detail"
+            src="/images/about-detail.webp"
+            alt="Farbroller in einer Farbwanne auf abgedecktem Boden"
+            width="600"
+            height="600"
             loading="lazy"
           />
         </div>
 
         <div className="about-text">
-          <h2 className="section-title">Ihr Malergeschäft aus Zürich</h2>
+          <p className="eyebrow">Über uns</p>
+          <h2 className="section-title">Handwerk mit Sorgfalt – vom Abdecken bis zur Abnahme.</h2>
           <p>
-            Gogi Color ist ein Malerbetrieb aus Zürich. Wir streichen Wohnungen, Häuser,
-            Treppenhäuser, Fassaden und Gewerbeflächen – für Privatkunden, Verwaltungen und Firmen.
+            Gogi Color ist ein Malergeschäft aus Zürich. Wir streichen Wohnungen, Häuser,
+            Treppenhäuser, Fassaden und Gewerbeflächen – für Privatkunden, Liegenschaftsverwaltungen
+            und Firmen.
           </p>
           <p>
-            Bei uns zählt saubere Handwerksarbeit: gute Vorbereitung, exakte Kanten und
-            eine Baustelle, die ordentlich hinterlassen wird.
+            Bei uns zählt saubere Handwerksarbeit: gründliche Vorbereitung, exakte Kanten und eine
+            Baustelle, die ordentlich hinterlassen wird. Von der Besichtigung bis zur Abnahme haben
+            Sie einen festen Ansprechpartner.
           </p>
 
-          <ul className="about-list">
-            {points.map((p) => (
-              <li key={p}><Check /> {p}</li>
+          <ul className="values">
+            {values.map(([Icon, title, text]) => (
+              <li key={title} className="value">
+                <span className="value-icon"><Icon /></span>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </li>
             ))}
           </ul>
 
-          <a className="btn btn-dark" href="#kontakt">Jetzt Offerte anfragen</a>
+          <a className="btn btn-dark btn-lg" href="/offerte">
+            Besichtigung vereinbaren <Arrow />
+          </a>
         </div>
       </div>
     </section>

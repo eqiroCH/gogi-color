@@ -1,64 +1,96 @@
 .footer {
-  background: var(--dark);
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.98rem;
+  border-top: 3px solid var(--gold);
+  background: var(--black);
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.97rem;
 }
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.1fr;
+  grid-template-columns: 1.5fr 1.1fr 0.9fr 1.1fr;
   gap: 2.5rem;
-  padding: 4rem 0 3rem;
+  padding-block: clamp(3.5rem, 7vw, 5rem) 3rem;
 }
 
 .footer-brand p {
-  margin-top: 1.2rem;
-  max-width: 20rem;
+  max-width: 21rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.footer-social a {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid var(--line-dark);
+  border-radius: 50%;
+  color: var(--gold);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.footer-social a:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 76, 0.1);
+}
+
+.footer-social svg {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 .footer-col {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.45rem;
+  gap: 0.55rem;
 }
 
-.footer-col h4 {
-  color: var(--white);
-  font-size: 1.05rem;
-  margin-bottom: 0.4rem;
-}
-
-.footer-col a:hover,
-.footer-col button:hover {
+.footer-col h2 {
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-stretch: 100%;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--gold);
 }
 
+.footer-col a:hover,
+.footer-bottom a:hover {
+  color: var(--white);
+}
+
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--line-dark);
   font-size: 0.88rem;
 }
 
 .footer-bottom-inner {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.8rem 1.5rem;
-  padding: 1.2rem 0;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-block: 1.4rem;
 }
 
-.footer-bottom-inner > div {
+.footer-bottom nav {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
 }
 
-.footer-bottom button:hover {
-  color: var(--gold);
-}
-
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .footer-top {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
   }
 }
 

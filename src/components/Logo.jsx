@@ -1,13 +1,13 @@
 import './Logo.css'
 
-function Logo({ light = false }) {
+// Schriftzug in den Markenfarben – sobald das offizielle Logo als Datei vorliegt, hier einsetzen
+function Logo() {
   return (
-    <span className={`logo ${light ? 'logo-light' : ''}`}>
-      <span className="logo-mark" aria-hidden="true">G</span>
-      <span className="logo-text">
-        <strong>Gogi <em>Color</em></strong>
-        <small>Malergeschäft Zürich</small>
+    <span className="logo">
+      <span className="logo-name">
+        Gogi <em>Color</em>
       </span>
+      <small>Malergeschäft · Zürich</small>
     </span>
   )
 }

@@ -1,55 +1,47 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Services from './components/Services'
-import Projects from './components/Projects'
-import About from './components/About'
-import Process from './components/Process'
-import CallToAction from './components/CallToAction'
-import FAQ from './components/FAQ'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
-import Impressum from './components/Impressum'
-import Datenschutz from './components/Datenschutz'
+import MobileBar from './components/MobileBar'
+import Home from './pages/Home'
+import ServicePage from './pages/ServicePage'
+import Kosten from './pages/Kosten'
+import Einsatzgebiet from './pages/Einsatzgebiet'
+import Offerte from './pages/Offerte'
+import Impressum from './pages/Impressum'
+import Datenschutz from './pages/Datenschutz'
+import NotFound from './pages/NotFound'
+import { servicePages } from './content/services'
 
-function App() {
-  const [page, setPage] = useState('home')
-  const goHome = (hash) => {
-    setPage('home')
-    requestAnimationFrame(() => {
-      if (hash) {
-        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      }
-    })
-  }
+const pages = {
+  '/': Home,
+  '/kosten': Kosten,
+  '/einsatzgebiet': Einsatzgebiet,
+  '/offerte': Offerte,
+  '/impressum': Impressum,
+  '/datenschutz': Datenschutz,
+  ...Object.fromEntries(
+    servicePages.map((service) => [`/${service.slug}`, () => <ServicePage service={service} />]),
+  ),
+}
 
-  const openPage = (name) => {
-    setPage(name)
-    window.scrollTo(0, 0)
-  }
+function App({ path }) {
+  const Page = pages[path] ?? NotFound
+
+  // Bei /seite#abschnitt erst nach dem Hydrieren zum Abschnitt springen
+  useEffect(() => {
+    if (window.location.hash) {
+      document.getElementById(window.location.hash.slice(1))?.scrollIntoView()
+    }
+  }, [])
 
   return (
     <>
-      <Navbar page={page} onNavigate={goHome} />
+      <Navbar path={path} />
       <main>
-        {page === 'impressum' && <Impressum onBack={() => goHome()} />}
-        {page === 'datenschutz' && <Datenschutz onBack={() => goHome()} />}
-        {page === 'home' && (
-          <>
-            <Hero />
-            <Services />
-            <About />
-            <CallToAction />
-            <Process />
-            <Projects />
-            <FAQ />
-            <Contact />
-          </>
-        )}
+        <Page />
       </main>
-      <Footer onNavigate={goHome} openPage={openPage} />
+      <Footer />
+      <MobileBar hidden={path === '/offerte'} />
     </>
   )
 }

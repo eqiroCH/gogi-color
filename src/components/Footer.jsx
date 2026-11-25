@@ -1,52 +1,76 @@
+import { useEffect, useState } from 'react'
 import Logo from './Logo'
+import { Instagram, Facebook } from './Icons'
+import { site, telHref } from '../site'
+import { servicePages } from '../content/services'
 import './Footer.css'
 
-const INSTAGRAM = 'https://www.instagram.com/gogi_color/'
+const links = [
+  ['/kosten', 'Kosten'],
+  ['/einsatzgebiet', 'Einsatzgebiet'],
+  ['/#ueber-uns', 'Über uns'],
+  ['/#ablauf', 'Ablauf'],
+  ['/#faq', 'FAQ'],
+  ['/offerte', 'Offerte anfragen'],
+]
 
-function Footer({ onNavigate, openPage }) {
+function Footer() {
+  // Jahr erst im Browser setzen, damit das vorgerenderte HTML beim Hydrieren passt
+  const [year, setYear] = useState(null)
+  useEffect(() => setYear(new Date().getFullYear()), [])
+
   return (
     <footer className="footer">
       <div className="container footer-top">
         <div className="footer-brand">
-          <Logo light />
-          <p>Ihr Malergeschäft in Zürich für Innenmalerei, Fassaden, Renovationen und Farbberatung.</p>
+          <Logo />
+          <p>
+            Ihr Malergeschäft in Zürich für Innenmalerei, Fassaden, Wohnungsabgaben und
+            Renovationen – sauber, termintreu und fair offeriert.
+          </p>
+          <div className="footer-social">
+            <a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <Instagram />
+            </a>
+            {site.facebook && (
+              <a href={site.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <Facebook />
+              </a>
+            )}
+          </div>
         </div>
 
         <div className="footer-col">
-          <h4>Leistungen</h4>
-          <span>Innenmalerei</span>
-          <span>Fassaden</span>
-          <span>Spachtel- &amp; Gipsarbeiten</span>
-          <span>Renovationen</span>
-          <span>Farbberatung</span>
+          <h2>Leistungen</h2>
+          {servicePages.map((service) => (
+            <a key={service.slug} href={`/${service.slug}`}>{service.name}</a>
+          ))}
         </div>
 
         <div className="footer-col">
-          <h4>Navigation</h4>
-          <button onClick={() => onNavigate('#leistungen')}>Leistungen</button>
-          <button onClick={() => onNavigate('#ueber-uns')}>Über uns</button>
-          <button onClick={() => onNavigate('#ablauf')}>Ablauf</button>
-          <button onClick={() => onNavigate('#faq')}>FAQ</button>
-          <button onClick={() => onNavigate('#kontakt')}>Kontakt</button>
+          <h2>Informationen</h2>
+          {links.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
         </div>
 
         <div className="footer-col">
-          <h4>Kontakt</h4>
-          <span>Gogi Color</span>
-          <span>Zürich, Schweiz</span>
-          <a href="mailto:info@gogicolor.ch">info@gogicolor.ch</a>
-          <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer">Instagram @gogi_color</a>
+          <h2>Kontakt</h2>
+          <span>{site.name}</span>
+          {site.street && <span>{site.street}</span>}
+          <span>{site.zip ? `${site.zip} ` : ''}{site.city}</span>
+          {site.phone && <a href={telHref(site.phone)}>{site.phone}</a>}
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={site.instagram} target="_blank" rel="noopener noreferrer">{site.instagramHandle}</a>
         </div>
       </div>
 
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
-          <span>© {new Date().getFullYear()} Gogi Color · Malergeschäft Zürich</span>
-          <div>
-            <button onClick={() => openPage('impressum')}>Impressum</button>
-            <button onClick={() => openPage('datenschutz')}>Datenschutz</button>
-            <span>Website by Eqiro</span>
-          </div>
+          <span>© {year ?? ''} {site.name} · Malergeschäft Zürich</span>
+          <nav aria-label="Rechtliches">
+            <a href="/impressum">Impressum</a>
+            <a href="/datenschutz">Datenschutz</a>
+            <a href="https://eqiro.ch" target="_blank" rel="noopener noreferrer">Website by Eqiro</a>
+          </nav>
         </div>
       </div>
     </footer>

@@ -1,23 +1,122 @@
-.photo-grid {
+.gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: clamp(11rem, 19vw, 15.5rem);
   gap: 1rem;
 }
 
-.photo-grid img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
+.gallery figure {
+  position: relative;
+  overflow: hidden;
   border-radius: var(--radius);
+  background: var(--sand);
 }
 
-.photo-cta {
-  text-align: center;
-  margin-top: 2.5rem;
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease);
 }
 
-@media (max-width: 900px) {
-  .photo-grid {
+.gallery figure:hover img {
+  transform: scale(1.04);
+}
+
+.gallery figcaption {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.85rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.94);
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--ink);
+}
+
+.g-tall {
+  grid-row: span 2;
+}
+
+.g-wide {
+  grid-column: span 2;
+}
+
+.insta-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: var(--black);
+  color: var(--white);
+  transition: background 0.25s;
+}
+
+.insta-card:hover {
+  background: var(--dark-2);
+}
+
+.insta-card > svg {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.insta-card strong {
+  display: block;
+  font-size: 1.3rem;
+  font-stretch: 88%;
+}
+
+.insta-card span {
+  font-size: 0.93rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.insta-card > svg:last-child {
+  width: 1.4rem;
+  height: 1.4rem;
+  color: var(--white);
+  transition: transform 0.25s;
+}
+
+.insta-card:hover > svg:last-child {
+  transform: translateX(4px);
+}
+
+@media (max-width: 760px) {
+  .gallery {
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 10.5rem;
+    grid-auto-flow: dense;
+    gap: 0.75rem;
+  }
+
+  .gallery figcaption {
+    left: 0.6rem;
+    bottom: 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .insta-card {
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .insta-card > svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .insta-card strong {
+    font-size: 1.05rem;
+  }
+
+  .insta-card span {
+    font-size: 0.82rem;
   }
 }

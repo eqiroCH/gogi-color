@@ -1,61 +1,38 @@
+import { Arrow } from './Icons'
+import { services, serviceHref } from '../content/services'
 import './Services.css'
-
-const img = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&h=560&q=75`
-
-const services = [
-  {
-    title: 'Innenmalerei',
-    text: 'Wände, Decken, Türen und Fensterrahmen. Möbel und Böden werden sauber abgedeckt.',
-    image: img('1581858726788-75bc0f6a952d'),
-  },
-  {
-    title: 'Fassaden',
-    text: 'Fassadenanstriche mit wetterfesten Farben – für Einfamilienhäuser und Mehrfamilienhäuser.',
-    image: img('1574359411659-15573a27fd0c'),
-  },
-  {
-    title: 'Spachtel- & Gipsarbeiten',
-    text: 'Löcher und Risse ausbessern, spachteln und schleifen – für einen glatten Untergrund.',
-    image: img('1611021061285-16c871740efa'),
-  },
-  {
-    title: 'Renovationen',
-    text: 'Auffrischen bei Umzug, Mieterwechsel oder Umbau – inklusive Vorbereitung und Abschluss.',
-    image: img('1630699144867-37acec97df5a'),
-  },
-  {
-    title: 'Farbberatung',
-    text: 'Wir beraten Sie vor Ort und zeigen Ihnen Farbmuster, damit die Farbe zu Raum und Licht passt.',
-    image: img('1525909002-1b05e0c869d8'),
-  },
-  {
-    title: 'Gewerbe & Verwaltungen',
-    text: 'Büros, Läden, Treppenhäuser und Mietobjekte – termingerecht und mit wenig Störung.',
-    image: img('1595846519845-68e298c2edd8'),
-  },
-]
 
 function Services() {
   return (
-    <section id="leistungen" className="section section-grey">
+    <section id="leistungen" className="section services">
       <div className="container">
-        <div className="section-head">
-          <h2 className="section-title">Unsere Leistungen</h2>
+        <div className="section-head section-head-split">
+          <div>
+            <p className="eyebrow">Leistungen</p>
+            <h2 className="section-title">Alles rund um Farbe, Wand und Fassade.</h2>
+          </div>
           <p className="section-lead">
-            Vom einzelnen Zimmer bis zur ganzen Fassade – wir übernehmen Vorbereitung,
-            Malerarbeiten und Aufräumen.
+            Vom einzelnen Zimmer bis zur ganzen Fassade: Wir übernehmen Abdecken, Vorbereitung,
+            Malerarbeiten und Aufräumen – alles aus einer Hand.
           </p>
         </div>
 
         <div className="services-grid">
-          {services.map((s) => (
-            <article key={s.title} className="service-card">
-              <img src={s.image} alt={s.title} loading="lazy" />
-              <div className="service-body">
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
+          {services.map((service, index) => (
+            <a key={service.slug} className="service-card" href={serviceHref(service)}>
+              <div className="service-media">
+                <img src={service.image} alt={service.alt} width="800" height="600" loading="lazy" />
+                <span className="service-num">{String(index + 1).padStart(2, '0')}</span>
               </div>
-            </article>
+              <div className="service-body">
+                <h3>{service.name}</h3>
+                <p>{service.short}</p>
+                <ul className="service-list">
+                  {service.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+                <span className="service-more">Mehr erfahren <Arrow /></span>
+              </div>
+            </a>
           ))}
         </div>
       </div>

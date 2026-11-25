@@ -1,37 +1,45 @@
-import { Instagram } from './Icons'
+import { Instagram, Arrow } from './Icons'
+import { site } from '../site'
 import './Projects.css'
 
-const INSTAGRAM = 'https://www.instagram.com/gogi_color/'
-const img = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&h=800&q=75`
-
+// Stimmungsbilder (Unsplash) – durch echte Projektfotos von Gogi Color ersetzen
 const photos = [
-  ['1615873968403-89e068629265', 'Wohnzimmer mit dunkelgrüner Akzentwand'],
-  ['1586023492125-27b2c045efd7', 'Hell gestrichener Wohnraum'],
-  ['1599619351208-3e6c839d6828', 'Frisch gestrichenes Wohnzimmer'],
-  ['1617104678098-de229db51175', 'Schlafzimmer mit dunkler Wand'],
+  ['/images/raum-terrakotta.webp', 'Warme Erdtöne', 'Schlafzimmer mit terrakottafarbener Wand', 'g-tall'],
+  ['/images/raum-gruen.webp', 'Akzentwand in Tannengrün', 'Wohnzimmer mit dunkelgrüner Akzentwand', 'g-wide'],
+  ['/images/raum-salbei.webp', 'Ruhiges Salbeigrün', 'Wohnraum mit salbeigrüner Wand'],
+  ['/images/raum-dunkel.webp', 'Dunkle Töne', 'Schlafzimmer mit dunkler Wandfarbe'],
+  ['/images/raum-hell.webp', 'Klassisches Weiss', 'Hell gestrichener Wohnraum mit gelbem Sessel'],
 ]
 
 function Projects() {
   return (
-    <section id="impressionen" className="section">
+    <section id="einblicke" className="section">
       <div className="container">
-        <div className="section-head">
-          <h2 className="section-title">Impressionen</h2>
+        <div className="section-head section-head-split">
+          <div>
+            <p className="eyebrow">Einblicke</p>
+            <h2 className="section-title">Farbe, die Räume verändert.</h2>
+          </div>
           <p className="section-lead">
-            Aktuelle Arbeiten, Vorher-Nachher-Bilder und Baustellen-Videos finden Sie auf
-            unserem Instagram-Kanal.
+            Warme Erdtöne, ein ruhiges Grün oder klassisches Weiss – wir beraten Sie gerne zur
+            passenden Farbe. Aktuelle Arbeiten und Vorher-Nachher-Bilder zeigen wir auf Instagram.
           </p>
         </div>
 
-        <div className="photo-grid">
-          {photos.map(([id, alt]) => (
-            <img key={id} src={img(id)} alt={alt} loading="lazy" />
+        <div className="gallery">
+          {photos.map(([src, caption, alt, size]) => (
+            <figure key={src} className={size}>
+              <img src={src} alt={alt} loading="lazy" />
+              <figcaption>{caption}</figcaption>
+            </figure>
           ))}
-        </div>
-
-        <div className="photo-cta">
-          <a className="btn btn-dark" href={INSTAGRAM} target="_blank" rel="noopener noreferrer">
-            <Instagram /> Mehr auf Instagram @gogi_color
+          <a className="insta-card" href={site.instagram} target="_blank" rel="noopener noreferrer">
+            <Instagram />
+            <div>
+              <strong>{site.instagramHandle}</strong>
+              <span>Aktuelle Projekte auf Instagram ansehen</span>
+            </div>
+            <Arrow />
           </a>
         </div>
       </div>
