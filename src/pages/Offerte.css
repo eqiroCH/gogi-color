@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Seite /offerte (pages/Offerte.jsx). Formular-Styles: components/OfferForm.css
+   ========================================================================== */
+
+/* Mobil: Formular möglichst früh im Bild, deshalb Kopf und Abstand knapper */
+.offerte-header.page-header {
+  padding-bottom: var(--space-lg);
+}
+
+.offerte-main.section {
+  padding-top: var(--space-md);
+}
+
+@media (min-width: 48em) {
+  .offerte-header.page-header {
+    padding-bottom: var(--section-y-tight);
+  }
+  .offerte-main.section {
+    padding-top: var(--section-y-tight);
+  }
+}
+
+/* ---- Raster: Formular + Seitenspalte -------------------------------------- */
+.offerte-layout {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 64em) {
+  .offerte-layout {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    column-gap: var(--space-2xl);
+    align-items: start;
+  }
+}
+
+@media (min-width: 80em) {
+  .offerte-layout {
+    column-gap: var(--space-3xl);
+  }
+}
+
+/* ---- Seitenspalte --------------------------------------------------------- */
+.offerte-aside {
+  display: grid;
+  align-content: start;
+  gap: var(--space-xl);
+}
+
+/* Tablet: Ablauf und Kontakt nebeneinander unter dem Formular */
+@media (min-width: 48em) and (max-width: 63.99em) {
+  .offerte-aside {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+  }
+}
+
+@media (min-width: 64em) {
+  .offerte-aside {
+    padding-top: var(--space-sm);
+  }
+}
+
+.offerte-aside__title {
+  margin-bottom: var(--space-md);
+  font-size: var(--fs-h3);
+}
+
+/* ---- So geht es weiter: senkrechte Schrittfolge ---------------------------- */
+.offerte-next__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.offerte-next__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  column-gap: var(--space-sm);
+  row-gap: 0.25rem;
+  padding-bottom: var(--space-md);
+}
+
+.offerte-next__step:last-child {
+  padding-bottom: 0;
+}
+
+/* Haarlinie zwischen den Nummern */
+.offerte-next__step::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 2.375rem;
+  bottom: 0.625rem;
+  width: 1px;
+  background: var(--line);
+}
+
+.offerte-next__step:last-child::before {
+  display: none;
+}
+
+.offerte-next__num {
+  grid-row: span 2;
+  color: var(--accent-text);
+  font-family: var(--font-serif);
+  font-size: 1.625rem;
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.offerte-next__title {
+  padding-top: 0.125rem;
+  font-size: var(--fs-h4);
+}
+
+.offerte-next__text {
+  color: var(--text-soft);
+  font-size: var(--fs-sm);
+}

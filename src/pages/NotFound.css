@@ -1,0 +1,101 @@
+/* 404 – alle Klassen mit Präfix .notfound- */
+
+/* ---- Weitere Seiten: Kosten, Einsatzgebiet --------------------------------- */
+.notfound-more {
+  display: grid;
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 48em) {
+  .notfound-more {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.notfound-more__card {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.notfound-more__card > * + * {
+  margin-top: 0;
+}
+
+.notfound-more__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-ocker-pale);
+  border-radius: var(--radius-sm);
+  color: var(--color-tanne);
+}
+
+.notfound-more__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2xs);
+  min-width: 0;
+}
+
+.notfound-more__title {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+}
+
+.notfound-more__title a {
+  color: var(--heading);
+  text-decoration: none;
+}
+
+.notfound-more__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: var(--space-2xs);
+  color: var(--heading);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+
+.notfound-more__link svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  transition: transform var(--dur) var(--ease);
+}
+
+.notfound-more__card:hover {
+  border-color: var(--color-line-strong);
+}
+
+.notfound-more__card:hover .notfound-more__title a {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.notfound-more__card:hover .notfound-more__link svg {
+  transform: translateX(3px);
+}
+
+/* Fokus auf der ganzen Karte statt nur auf dem Titel-Link */
+.notfound-more__card:has(a:focus-visible) {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.notfound-more__card a:focus-visible {
+  outline: none;
+}

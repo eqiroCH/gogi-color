@@ -1,0 +1,157 @@
+/* Seite /einsatzgebiet – alle Klassen mit Präfix .gebiet- (CSS landet in einem Bundle) */
+
+/* ---- Stadtkreise ---------------------------------------------------------- */
+/* Mobil: Zeilen (Nummer links, Name + Quartiere rechts) – kompakter und besser
+   scanbar als schmale Kacheln. Ab 48em Kacheln mit 3, ab 64em mit 4 Spalten. */
+.gebiet-kreise.number-tiles {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.gebiet-kreise .gebiet-kreis {
+  position: relative;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  column-gap: var(--space-sm);
+  row-gap: var(--space-3xs);
+  padding: var(--space-sm);
+}
+
+/* Kleines Ockerstück oben links – wie ein Farbmuster auf der Karte */
+.gebiet-kreis::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 1.5rem;
+  height: 3px;
+  background: var(--color-ocker);
+}
+
+.gebiet-kreise .gebiet-kreis__num {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3xs);
+  grid-row: 1 / span 2;
+  font-size: var(--fs-h2);
+}
+
+.gebiet-kreis__prefix {
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.gebiet-kreise .gebiet-kreis__name {
+  align-self: end;
+  font-family: var(--font-serif);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  hyphens: manual;
+}
+
+.gebiet-kreise .gebiet-kreis__meta {
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+}
+
+@media (min-width: 36em) {
+  .gebiet-kreise.number-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 48em) {
+  .gebiet-kreise.number-tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .gebiet-kreise .gebiet-kreis {
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--space-md) var(--space-md) var(--space-lg);
+  }
+  .gebiet-kreise .gebiet-kreis__num {
+    flex-direction: row;
+    align-items: baseline;
+    gap: var(--space-2xs);
+    grid-row: auto;
+    margin-bottom: var(--space-xs);
+  }
+}
+
+@media (min-width: 64em) {
+  .gebiet-kreise.number-tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ---- Gemeinden ------------------------------------------------------------ */
+.gebiet-gemeinden__grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.gebiet-gemeinden__grid .section-header {
+  margin-bottom: 0;
+}
+
+.gebiet-hinweis {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-ocker-pale);
+  border-radius: var(--radius-md);
+}
+
+.gebiet-hinweis__icon {
+  flex: none;
+  color: var(--color-tanne);
+}
+
+.gebiet-hinweis__body {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3xs);
+}
+
+.gebiet-hinweis__title {
+  color: var(--color-tinte);
+  font-family: var(--font-serif);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+}
+
+.gebiet-hinweis__text {
+  color: var(--color-tinte-soft);
+}
+
+.gebiet-hinweis .link-arrow {
+  margin-top: var(--space-3xs);
+}
+
+/* Desktop: Titel links, Hinweis rechts (wie der geteilte Abschnittskopf
+   bei den Stadtkreisen), darunter die Orte über die volle Breite */
+@media (min-width: 64em) {
+  .gebiet-gemeinden__grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-areas:
+      'head note'
+      'list list';
+    column-gap: var(--space-2xl);
+    row-gap: var(--stack-header);
+    align-items: end;
+  }
+  .gebiet-gemeinden__grid .section-header {
+    grid-area: head;
+  }
+  .gebiet-orte {
+    grid-area: list;
+  }
+  .gebiet-hinweis {
+    grid-area: note;
+  }
+}

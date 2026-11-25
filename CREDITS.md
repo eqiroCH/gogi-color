@@ -33,8 +33,10 @@ Foto-URLs wurden damals nicht festgehalten.
 
 ## Schriften
 
-Selbst gehostet über [Fontsource](https://fontsource.org) (npm), Lizenz SIL Open Font License.
-Details in `package.json`.
+Selbst gehostet über [Fontsource](https://fontsource.org) (npm), beide unter der SIL Open Font License:
+
+- **Literata** (`@fontsource-variable/literata`) für Überschriften
+- **Archivo** (`@fontsource-variable/archivo`) für Text und Bedienung
 
 ## Richtwerte
 

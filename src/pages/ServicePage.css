@@ -1,0 +1,96 @@
+/* Leistungsseiten – alle Klassen mit Präfix .service-page- (CSS landet in einem Bundle) */
+
+/* ---- Einleitung: Titel links, Absätze rechts (ab 64em) -------------------- */
+.split.service-page-intro__grid {
+  gap: var(--stack-header) var(--space-3xl);
+}
+
+.service-page-intro .section-header {
+  margin-bottom: 0;
+}
+
+.service-page-intro__body {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-md);
+}
+
+.service-page-intro__text {
+  --stack: var(--space-sm);
+  max-width: 38em;
+  color: var(--text-soft);
+  font-size: var(--fs-md);
+}
+
+/* Erster Absatz in Tinte: Einstieg in den Text */
+.service-page-intro__text > :first-child {
+  color: var(--text);
+}
+
+@media (min-width: 64em) {
+  .service-page-intro__body {
+    padding-top: var(--space-lg);
+  }
+}
+
+/* ---- Info-Box unter dem Leistungsumfang ----------------------------------- */
+.info-box.service-page-info {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.info-box.service-page-info > * + * {
+  margin-top: 0;
+}
+
+.service-page-info__head {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-xs);
+}
+
+/* .info-box p färbt sonst auch den Kleintitel grau */
+.service-page-info .eyebrow {
+  color: var(--accent-text);
+}
+
+.service-page-info__title {
+  max-width: 24ch;
+}
+
+.service-page-info__body {
+  display: grid;
+  gap: var(--space-xs);
+  max-width: 62ch;
+}
+
+.service-page-info__body .info-box__source {
+  margin-top: var(--space-2xs);
+}
+
+.service-page-info__link {
+  overflow-wrap: anywhere;
+}
+
+.service-page-info__link svg {
+  display: inline-block;
+  margin-left: 0.2em;
+  vertical-align: -0.15em;
+}
+
+@media (min-width: 64em) {
+  .info-box.service-page-info {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--space-2xl);
+    align-items: start;
+    margin-top: var(--space-lg);
+  }
+}
+
+/* ---- Weitere Leistungen: 4 Karten in einer Reihe (ab 64em) ---------------- */
+@media (min-width: 64em) {
+  .service-page-related .service-cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
