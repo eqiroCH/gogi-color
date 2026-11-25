@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Gogi Color – Design-Tokens
+   Idee: «Ladenschild & Farbmuster». Tannengrün und Ocker wie ein altes Zürcher
+   Ladenschild, Kalkweiss als ruhige Wandfläche, scharfe Kanten wie frisch
+   abgeklebt. Alle Werte hier zentral; Komponenten verwenden nur diese Variablen.
+   Doku: DESIGN.md
+   ========================================================================== */
+
+:root {
+  /* ---- Farben: Grundpalette (benannt nach Farbtönen) ---------------------- */
+  --color-kalk: #f5f2eb;        /* Seitenhintergrund, «Kalkweiss» */
+  --color-papier: #ffffff;      /* Karten, Panels, Formulare */
+  --color-sand: #ebe5d9;        /* Alternativer Abschnittshintergrund */
+  --color-sand-dark: #ded6c6;   /* Flächen auf Sand, Hover */
+  --color-tinte: #1d2421;       /* Haupttext, 15:1 auf Kalk */
+  --color-tinte-soft: #4a524d;  /* Fliesstext sekundär, 7:1 auf Kalk */
+  --color-tinte-muted: #5d635d; /* Meta, Quellen, ≥ 4.9:1 auch auf Sand */
+  --color-tanne: #1e3a32;       /* Tannengrün: dunkle Abschnitte, Footer */
+  --color-tanne-light: #2a4a40; /* Karten/Linien auf Tannengrün */
+  --color-tanne-deep: #152a24;  /* Tiefster Grünton */
+  --color-ocker: #c8963e;       /* Markenakzent & Hauptbutton (Text darauf: Tinte, 6:1) */
+  --color-ocker-hover: #b5842f;
+  --color-ocker-light: #e7c98a; /* Ocker auf dunklem Grund (Text ok, 7.7:1 auf Tanne) */
+  --color-ocker-pale: #f3e6c8;  /* Sehr helle Ockerfläche (Hinweise) */
+  --color-ocker-text: #7a581b;  /* Ocker als Textfarbe auf hellem Grund (≥ 5:1) */
+  --color-error: #a3321f;
+  --color-success: #2f6b4a;
+
+  /* Linien */
+  --color-line: #d9d2c4;        /* Haarlinien auf Kalk/Sand (dekorativ) */
+  --color-line-strong: #8c8576; /* Rahmen von Eingabefeldern (≥ 3:1) */
+  --color-line-dark: rgba(245, 242, 235, 0.18); /* Haarlinien auf Tannengrün */
+
+  /* ---- Semantische Farben (in .on-dark umdefiniert) ----------------------- */
+  --bg: var(--color-kalk);
+  --surface: var(--color-papier);
+  --text: var(--color-tinte);
+  --text-soft: var(--color-tinte-soft);
+  --text-muted: var(--color-tinte-muted);
+  --heading: var(--color-tinte);
+  --accent: var(--color-ocker);
+  --accent-text: var(--color-ocker-text);
+  --line: var(--color-line);
+  --link: var(--color-tanne);
+  --focus-ring: var(--color-tanne);
+
+  /* ---- Typografie --------------------------------------------------------- */
+  --font-serif: 'Literata Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-sans: 'Archivo Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  --fs-xs: 0.8125rem;                                        /* 13px  Kleintitel, Meta */
+  --fs-sm: 0.9375rem;                                        /* 15px  Kleintext, Navigation */
+  --fs-base: clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);       /* 16–17 Fliesstext */
+  --fs-md: 1.125rem;                                         /* 18px  hervorgehobener Text */
+  --fs-lead: clamp(1.0625rem, 0.98rem + 0.4vw, 1.25rem);     /* 17–20 Lead */
+  --fs-h4: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);       /* 17–19 */
+  --fs-h3: clamp(1.25rem, 1.14rem + 0.5vw, 1.5rem);          /* 20–24 */
+  --fs-h2: clamp(1.75rem, 1.38rem + 1.6vw, 2.75rem);         /* 28–44 */
+  --fs-h1: clamp(2.125rem, 1.6rem + 2.4vw, 3.5rem);          /* 34–56 */
+  --fs-display: clamp(2.375rem, 1.55rem + 3.6vw, 4.375rem);  /* 38–70 Startseite */
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.22;
+  --lh-base: 1.6;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --tracking-tight: -0.015em;
+  --tracking-caps: 0.12em;
+
+  /* ---- Abstände (4er-Raster) --------------------------------------------- */
+  --space-3xs: 0.25rem;  /* 4 */
+  --space-2xs: 0.5rem;   /* 8 */
+  --space-xs: 0.75rem;   /* 12 */
+  --space-sm: 1rem;      /* 16 */
+  --space-md: 1.5rem;    /* 24 */
+  --space-lg: 2rem;      /* 32 */
+  --space-xl: 3rem;      /* 48 */
+  --space-2xl: 4rem;     /* 64 */
+  --space-3xl: 6rem;     /* 96 */
+  --space-4xl: 8rem;     /* 128 */
+
+  /* Fluide Rhythmus-Abstände */
+  --section-y: clamp(3.5rem, 2.4rem + 4.8vw, 7rem);        /* 56–112 Abschnitt oben/unten */
+  --section-y-tight: clamp(2.5rem, 2rem + 2.4vw, 4.5rem);  /* 40–72 */
+  --stack-header: clamp(2rem, 1.6rem + 1.8vw, 3.5rem);     /* Abschnittskopf → Inhalt */
+  --grid-gap: clamp(1rem, 0.7rem + 1.4vw, 2rem);           /* 16–32 Raster-Abstand */
+
+  /* ---- Container ---------------------------------------------------------- */
+  --container: 76rem;        /* 1216px Standard */
+  --container-wide: 88rem;   /* 1408px Galerie/Hero */
+  --container-narrow: 46rem; /* 736px Prosa, Rechtstexte */
+  --gutter: clamp(1.25rem, 0.75rem + 2.2vw, 2.5rem); /* 20–40 Seitenrand */
+  --measure: 66ch;           /* Maximale Zeilenlänge Fliesstext */
+
+  /* ---- Radien: «saubere Kanten» – bewusst klein --------------------------- */
+  --radius-0: 0;
+  --radius-sm: 2px;  /* Buttons, Chips, Felder, Bilder */
+  --radius-md: 4px;  /* Karten, Panels */
+
+  /* ---- Linien & Schatten -------------------------------------------------- */
+  --border: 1px solid var(--line);
+  --shadow-1: 0 1px 2px rgba(29, 36, 33, 0.06), 0 1px 1px rgba(29, 36, 33, 0.04);
+  --shadow-2: 0 18px 40px -18px rgba(21, 42, 36, 0.35), 0 2px 6px rgba(21, 42, 36, 0.06);
+  --shadow-bar: 0 -8px 24px -12px rgba(21, 42, 36, 0.28);
+
+  /* ---- Bewegung ----------------------------------------------------------- */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 140ms;
+  --dur: 220ms;
+
+  /* ---- Fixe Masse --------------------------------------------------------- */
+  --header-h: 4rem;        /* 64px mobil, 76px ab 64em */
+  --mobilebar-h: 4.25rem;  /* 68px fixe Aktionsleiste unten (bis 64em) */
+  --tap: 2.75rem;          /* 44px Mindestgrösse Touch-Ziel */
+
+  /* Breakpoints (nur Doku – in Media Queries als em-Werte schreiben):
+     sm 30em (480) · md 48em (768) · lg 64em (1024) · xl 80em (1280) */
+}
+
+@media (min-width: 64em) {
+  :root {
+    --header-h: 4.75rem;
+  }
+}
+
+/* Dunkle Flächen: alle semantischen Farben umdrehen. Auf jedes Element mit
+   dunklem Hintergrund die Klasse .on-dark setzen (.section--dark hat sie eingebaut). */
+.on-dark,
+.section--dark {
+  --bg: var(--color-tanne);
+  --surface: var(--color-tanne-light);
+  --text: var(--color-kalk);
+  --text-soft: #c9d3cc;
+  --text-muted: #a9b7ae;
+  --heading: var(--color-kalk);
+  --accent-text: var(--color-ocker-light);
+  --line: var(--color-line-dark);
+  --link: var(--color-ocker-light);
+  --focus-ring: var(--color-ocker-light);
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+  }
+}

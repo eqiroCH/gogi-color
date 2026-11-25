@@ -1,0 +1,7 @@
+/* Globale Styles in fester Reihenfolge. Wird einmal in src/main.jsx importiert.
+   Komponenten- und Seiten-CSS importieren die jeweiligen .jsx-Dateien selbst. */
+@import './tokens.css';
+@import './base.css';
+@import './layout.css';
+@import './components.css';
+@import './forms.css';

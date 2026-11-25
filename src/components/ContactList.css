@@ -1,0 +1,101 @@
+.contact-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-list__item {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-height: var(--tap);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.contact-list__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--heading);
+  transition: background-color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+
+.contact-list__text {
+  display: grid;
+  min-width: 0;
+}
+
+.contact-list__label {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact-list__value {
+  color: var(--heading);
+  font-weight: var(--fw-semibold);
+  overflow-wrap: anywhere;
+}
+
+a.contact-list__item:hover .contact-list__value {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+
+a.contact-list__item:hover .contact-list__icon {
+  background: var(--color-ocker);
+  border-color: var(--color-ocker);
+  color: var(--color-tinte);
+}
+
+/* Standard: Einträge mit Haarlinien */
+.contact-list--default > li {
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-list--default > li:first-child {
+  border-top: 1px solid var(--line);
+}
+
+/* Kompakt: ohne Beschriftung und Linien */
+.contact-list--compact {
+  gap: 0.125rem;
+}
+
+.contact-list--compact .contact-list__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.contact-list--compact .contact-list__icon {
+  width: auto;
+  height: auto;
+  background: none;
+  border: 0;
+  color: var(--accent-text);
+}
+
+.contact-list--compact a.contact-list__item:hover .contact-list__icon {
+  background: none;
+  color: var(--accent-text);
+}
+
+.contact-list--compact .contact-list__value {
+  font-weight: var(--fw-medium);
+}
