@@ -96,10 +96,12 @@
   --gutter: clamp(1.25rem, 0.75rem + 2.2vw, 2.5rem); /* 20–40 Seitenrand */
   --measure: 66ch;           /* Maximale Zeilenlänge Fliesstext */
 
-  /* ---- Radien: «saubere Kanten» – bewusst klein --------------------------- */
+  /* ---- Radien: weich und freundlich -------------------------------------- */
   --radius-0: 0;
-  --radius-sm: 2px;  /* Buttons, Chips, Felder, Bilder */
-  --radius-md: 4px;  /* Karten, Panels */
+  --radius-xs: 4px;     /* Kontrollkästchen, kleine Marker */
+  --radius-sm: 10px;    /* Felder, Auswahlkacheln, Icon-Kacheln, Hinweise */
+  --radius-md: 16px;    /* Karten, Panels, Bilder */
+  --radius-pill: 999px; /* Buttons, Chips, Etiketten */
 
   /* ---- Linien & Schatten -------------------------------------------------- */
   --border: 1px solid var(--line);

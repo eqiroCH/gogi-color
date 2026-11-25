@@ -5,7 +5,7 @@
 Gogi Color soll wirken wie ein gut geführtes Zürcher Handwerksgeschäft: ruhig, präzise, vertrauenswürdig.
 Die Farben stammen vom klassischen Ladenschild (Tannengrün mit Ocker/Gold, passend zum goldenen Logo auf
 Instagram) und von der frisch gestrichenen Wand (Kalkweiss, Sandstein). Die Formensprache ist die einer
-**Farbmusterkarte**: scharfe Kanten (Radien 2–4 px), feine Haarlinien, kleine **Farbquadrate** vor Kleintiteln
+**Farbmusterkarte**: weiche Ecken (Buttons als Pille, Karten 16 px), feine Haarlinien, kleine **Farbquadrate** vor Kleintiteln
 und Listenpunkten und die **Farbtonkarte** (ein Ockerton in drei Nuancen) als Markenzeichen im Logo, am Bildrand
 und am CTA-Band. Farbe setzen wir sparsam ein. Ocker ist für die Hauptaktion und kleine Akzente da, Tannengrün
 für einen dunklen Abschnitt pro Seite und den Footer.
@@ -100,7 +100,7 @@ Ocker **nie** als Textfarbe auf hellem Grund (zu wenig Kontrast), dafür gibt es
   `--stack-header` (32–56, Abschnittskopf → Inhalt), `--grid-gap` (16–32, Raster).
 - Container: `--container` 76rem (1216 px), `--container-wide` 88rem, `--container-narrow` 46rem,
   Seitenrand `--gutter` 20–40 px.
-- Radien: `--radius-sm` 2 px (Buttons, Felder, Chips, Bilder), `--radius-md` 4 px (Karten, Panels). Nichts Rundes ausser Radio-Buttons.
+- Radien: `--radius-pill` (Buttons, Chips, Etiketten, mobile Leiste), `--radius-sm` 10 px (Felder, Auswahlkacheln, Icon-Kacheln, Hinweise), `--radius-md` 16 px (Karten, Panels, Bilder), `--radius-xs` 4 px (Kontrollkästchen). Die Farbquadrate und die Farbtonkarte bleiben eckig.
 - Schatten sparsam: `--shadow-1` (Karten/Panels auf Wunsch), `--shadow-2` (Menüs, schwebende Etiketten), `--shadow-bar` (mobile Leiste).
 - Bewegung: `--dur-fast` 140 ms, `--dur` 220 ms, `--ease`. Bei `prefers-reduced-motion` automatisch 0.
 - Fixe Masse: `--header-h` (64 / 76 px), `--mobilebar-h` 68 px, `--tap` 44 px Mindest-Touchziel.
@@ -291,7 +291,7 @@ Neue Icons im selben Stil (24×24, `stroke`, runde Enden) in `Icons.jsx` ergänz
 ### 5.2 Karten
 
 ```html
-<article class="card"><h3 class="card__title">…</h3><p>…</p></article>   <!-- Papier, Linie, 4px Radius -->
+<article class="card"><h3 class="card__title">…</h3><p>…</p></article>   <!-- Papier, Linie, 16px Radius -->
 ```
 
 Kinder bekommen automatisch 12 px Abstand. `.card--flat` = transparent. Ganze Karte klickbar: Link im Titel mit `.stretched-link`.
@@ -357,7 +357,7 @@ Ocker-Quadrat mit Tinte-Haken. `.check-list--lines` (Haarlinien zwischen Punkten
 <ul class="chip-list" aria-label="Gemeinden"><li class="chip">Adliswil</li>…</ul>
 ```
 
-Rechteckige Chips (2 px Radius, Haarlinie, Papier). `a.chip` wird zum 44-px-Touchziel. `.chip--swatch` = mit kleinem Ockerquadrat.
+Runde Chips (Pillenform, Haarlinie, Papier). `a.chip` wird zum 44-px-Touchziel. `.chip--swatch` = mit kleinem Ockerquadrat.
 
 ### 5.8 Nummerierte Kacheln (Stadtkreise)
 
@@ -415,7 +415,7 @@ Serif (`--fs-h3`), Absätze mit 1em Abstand, Links unterstrichen. Max. Zeilenlä
 - Immer `width`/`height` (über `Img`), `alt` aus dem Content, `loading="lazy"`, ausser beim einen Hauptbild der
   Seite (`PageHeader` macht das).
 - Bildausschnitt per `.media--*` + `object-fit: cover`. Leistungsbilder sind 800×600 (4:3).
-- Ecken 2 px (`--radius-sm`), keine Schatten auf Fotos, keine Filter, keine schrägen oder runden Masken.
+- Ecken 16 px (`--radius-md`), am Handy randlose Bilder ohne Radius, keine Schatten auf Fotos, keine Filter, keine schrägen oder runden Masken.
 - Markenzeichen am Bild: Farbtonkarte (`PageHeader`) oder `.swatch-label`. Pro Bildschirm höchstens eins davon.
 
 ## 8. Do und Don't

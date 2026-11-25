@@ -24,11 +24,11 @@
   place-items: center;
   align-content: center;
   gap: 0.125rem;
-  min-width: 3.25rem;
+  min-width: 4.25rem;
   min-height: 3rem;
-  padding: 0.25rem 0.375rem;
+  padding: 0.25rem 0.875rem;
   border: 1px solid var(--color-line-strong);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   color: var(--color-tinte);
   font-size: 0.6875rem;
   font-weight: var(--fw-semibold);

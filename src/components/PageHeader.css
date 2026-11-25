@@ -141,7 +141,7 @@
     margin-inline: 0;
   }
   .page-header__media .media {
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
   }
   .page-header__media::after {
     left: -0.5rem;

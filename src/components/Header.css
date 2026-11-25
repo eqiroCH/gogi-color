@@ -237,7 +237,7 @@
   padding: 0.5rem 0.75rem 0.5rem 0.875rem;
   background: transparent;
   border: 1.5px solid var(--color-tinte);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-pill);
   color: var(--color-tinte);
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
