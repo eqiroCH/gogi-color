@@ -86,6 +86,8 @@ function HeroSecondaryAction() {
 
 function Hero() {
   const [titleMain, titleRest] = hero.title.split(' – ')
+  // Erster Teil («saubere Arbeit») bekommt einen Pinselstrich
+  const [brushed, ...afterBrush] = (titleRest ?? '').split(', ')
   return (
     <section className="home-hero" aria-labelledby="home-title">
       <div className="home-hero__grid">
@@ -96,7 +98,8 @@ function Hero() {
             {titleRest && (
               <span className="home-hero__title-rest">
                 <span className="visually-hidden"> – </span>
-                {titleRest}
+                <span className="brush">{brushed}</span>
+                {afterBrush.length > 0 && `, ${afterBrush.join(', ')}`}
               </span>
             )}
           </h1>

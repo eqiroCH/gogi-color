@@ -58,7 +58,7 @@
   padding-top: 0;
 }
 
-/* ---- Kleintitel («Eyebrow») mit Farbmuster-Quadrat ------------------------ */
+/* ---- Kleintitel («Eyebrow») mit Farbpunkt -------------------------------- */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -78,6 +78,7 @@
   flex: none;
   width: 0.625rem;
   height: 0.625rem;
+  border-radius: 50%;
   background: var(--color-ocker);
 }
 

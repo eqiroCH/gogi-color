@@ -35,7 +35,7 @@ Foto-URLs wurden damals nicht festgehalten.
 
 Selbst gehostet über [Fontsource](https://fontsource.org) (npm), beide unter der SIL Open Font License:
 
-- **Literata** (`@fontsource-variable/literata`) für Überschriften
+- **Fraunces** (`@fontsource-variable/fraunces`, Achsen wght + SOFT) für Überschriften
 - **Archivo** (`@fontsource-variable/archivo`) für Text und Bedienung
 
 ## Richtwerte

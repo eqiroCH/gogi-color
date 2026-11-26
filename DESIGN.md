@@ -5,12 +5,12 @@
 Gogi Color soll wirken wie ein gut geführtes Zürcher Handwerksgeschäft: ruhig, präzise, vertrauenswürdig.
 Die Farben stammen vom klassischen Ladenschild (Tannengrün mit Ocker/Gold, passend zum goldenen Logo auf
 Instagram) und von der frisch gestrichenen Wand (Kalkweiss, Sandstein). Die Formensprache ist die einer
-**Farbmusterkarte**: weiche Ecken (Buttons als Pille, Karten 16 px), feine Haarlinien, kleine **Farbquadrate** vor Kleintiteln
-und Listenpunkten und die **Farbtonkarte** (ein Ockerton in drei Nuancen) als Markenzeichen im Logo, am Bildrand
+**Farbmusterkarte**: weiche Ecken (Buttons als Pille, Karten 16 px), feine Haarlinien, kleine **Farbpunkte** vor Kleintiteln
+und Ocker-Häkchen vor Listenpunkten und die **Farbtonkarte** (ein Ockerton in drei Nuancen) als Markenzeichen im Logo, am Bildrand
 und am CTA-Band. Farbe setzen wir sparsam ein. Ocker ist für die Hauptaktion und kleine Akzente da, Tannengrün
 für einen dunklen Abschnitt pro Seite und den Footer.
 
-Schriften: **Literata** (Serif, Überschriften) und **Archivo** (Grotesk, Text und Bedienung). Beide sind
+Schriften: **Fraunces** (weiche Serif mit `SOFT` 100, Überschriften) und **Archivo** (Grotesk, Text und Bedienung). Beide sind
 selbst gehostet über `@fontsource-variable/*` und werden in `src/main.jsx` importiert.
 
 ---
@@ -58,7 +58,7 @@ selbst gehostet über `@fontsource-variable/*` und werden in `src/main.jsx` impo
 | `--color-tinte-muted` | `#5d635d` | Meta, Quellen, Beschriftungen | 5.5:1 Kalk, 4.9:1 Sand |
 | `--color-tanne` | `#1e3a32` | Dunkle Abschnitte, Footer, Icons auf hell | Kalk darauf 11:1 |
 | `--color-tanne-light` | `#2a4a40` | Karten auf Tannengrün | – |
-| `--color-ocker` | `#c8963e` | **Hauptbutton** (Text Tinte, 6:1), Farbquadrate, Akzentlinien | – |
+| `--color-ocker` | `#c8963e` | **Hauptbutton** (Text Tinte, 6:1), Farbpunkte, Akzentlinien, Pinselstrich (hell) | – |
 | `--color-ocker-hover` | `#b5842f` | Hover Hauptbutton | Tinte 4.8:1 |
 | `--color-ocker-light` | `#e7c98a` | Ocker als Text auf Tannengrün | 7.7:1 |
 | `--color-ocker-pale` | `#f3e6c8` | Helle Hinweisflächen, Icon-Kacheln | Tinte 12.8:1 |
@@ -89,9 +89,9 @@ Ocker **nie** als Textfarbe auf hellem Grund (zu wenig Kontrast), dafür gibt es
 | `--fs-sm` | 15 | Kleintext, Navigation, Karten |
 | `--fs-xs` | 13 | Kleintitel, Tabellenkopf, Meta |
 
-- `--font-serif` (Literata 600) für `h1–h3`, `--font-sans` (Archivo) für alles andere, `h4` ist Archivo.
+- `--font-serif` (Fraunces 600, `SOFT` 100 – global in `body` gesetzt, Archivo ignoriert die Achse) für `h1–h3`, `--font-sans` (Archivo) für alles andere, `h4` ist Archivo.
 - Zeilenhöhen `--lh-tight` 1.08, `--lh-snug` 1.22, `--lh-base` 1.6. Zeilenlänge max. `--measure` (66ch).
-- Kleintitel (`.eyebrow`) = Archivo 13 px, 600, Versalien, `--tracking-caps`, mit Ocker-Quadrat davor.
+- Kleintitel (`.eyebrow`) = Archivo 13 px, 600, Versalien, `--tracking-caps`, mit Ocker-Punkt davor.
 
 ### Abstände, Radien, Schatten, Masse
 
@@ -100,7 +100,7 @@ Ocker **nie** als Textfarbe auf hellem Grund (zu wenig Kontrast), dafür gibt es
   `--stack-header` (32–56, Abschnittskopf → Inhalt), `--grid-gap` (16–32, Raster).
 - Container: `--container` 76rem (1216 px), `--container-wide` 88rem, `--container-narrow` 46rem,
   Seitenrand `--gutter` 20–40 px.
-- Radien: `--radius-pill` (Buttons, Chips, Etiketten, mobile Leiste), `--radius-sm` 10 px (Felder, Auswahlkacheln, Icon-Kacheln, Hinweise), `--radius-md` 16 px (Karten, Panels, Bilder), `--radius-xs` 4 px (Kontrollkästchen). Die Farbquadrate und die Farbtonkarte bleiben eckig.
+- Radien: `--radius-pill` (Buttons, Chips, Etiketten, mobile Leiste), `--radius-sm` 10 px (Felder, Auswahlkacheln, Icon-Kacheln, Hinweise), `--radius-md` 16 px (Karten, Panels, Bilder), `--radius-xs` 4 px (Kontrollkästchen). Die Farbtonkarte (Logo, Bildrand) bleibt eckig.
 - Schatten sparsam: `--shadow-1` (Karten/Panels auf Wunsch), `--shadow-2` (Menüs, schwebende Etiketten), `--shadow-bar` (mobile Leiste).
 - Bewegung: `--dur-fast` 140 ms, `--dur` 220 ms, `--ease`. Bei `prefers-reduced-motion` automatisch 0.
 - Fixe Masse: `--header-h` (64 / 76 px), `--mobilebar-h` 68 px, `--tap` 44 px Mindest-Touchziel.
@@ -123,7 +123,7 @@ Ocker **nie** als Textfarbe auf hellem Grund (zu wenig Kontrast), dafür gibt es
 | `.section--rule` | Haarlinie oben (zwei gleichfarbige Abschnitte hintereinander) |
 | `.section--flush-top` | ohne Abstand oben |
 | `.section-header` (+ `--split`, `--center`) | Kleintitel, Titel, Lead; `--split` = Titel links, Lead rechts ab 64em |
-| `.eyebrow` | Kleintitel mit Farbquadrat |
+| `.eyebrow` | Kleintitel mit Farbpunkt |
 | `.lead` | Einleitungstext (`--fs-lead`, max. 40em) |
 | `.section-footer` | Zeile mit Links/Buttons unter einem Abschnitt |
 | `.grid` + `--2` / `--3` / `--4` / `--auto` | Raster (1 Spalte mobil; `--2` ab 48em; `--3`/`--4` 2 Spalten ab 48em, 3/4 ab 64em; `--auto` min. 16rem) |
@@ -357,7 +357,7 @@ Ocker-Quadrat mit Tinte-Haken. `.check-list--lines` (Haarlinien zwischen Punkten
 <ul class="chip-list" aria-label="Gemeinden"><li class="chip">Adliswil</li>…</ul>
 ```
 
-Runde Chips (Pillenform, Haarlinie, Papier). `a.chip` wird zum 44-px-Touchziel. `.chip--swatch` = mit kleinem Ockerquadrat.
+Runde Chips (Pillenform, Haarlinie, Papier). `a.chip` wird zum 44-px-Touchziel. `.chip--swatch` = mit kleinem Ockerpunkt.
 
 ### 5.8 Nummerierte Kacheln (Stadtkreise)
 
@@ -423,7 +423,8 @@ Serif (`--fs-h3`), Absätze mit 1em Abstand, Links unterstrichen. Max. Zeilenlä
 **Do**
 - Eine Hauptaktion (Ocker) pro Bildschirm, sonst Sekundär-Buttons oder `.link-arrow`.
 - Kleintitel kurz (1–3 Wörter), Titel als ganze Aussage aus dem Content.
-- Haarlinien und Farbquadrate statt Schatten und Rahmen um alles.
+- Haarlinien und Farbpunkte statt Schatten und Rahmen um alles.
+- Verspielte Akzente sparsam: ein Pinselstrich (`.brush`) nur im Startseiten-Titel, Buttons heben sich beim Hover um 2 px an.
 - Leere `site`-Felder immer prüfen (`site.phone && …`).
 - Auf 375 px prüfen: keine waagrechte Scrollbar, Touchziele mindestens 44 px, Text mindestens 15 px (Meta 13 px).
 - Überschriften-Hierarchie: eine `h1` (PageHeader), dann `h2` pro Abschnitt, `h3` in Karten.

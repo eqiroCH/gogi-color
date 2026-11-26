@@ -45,7 +45,7 @@
   --focus-ring: var(--color-tanne);
 
   /* ---- Typografie --------------------------------------------------------- */
-  --font-serif: 'Literata Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-serif: 'Fraunces Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-sans: 'Archivo Variable', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 
   --fs-xs: 0.8125rem;                                        /* 13px  Kleintitel, Meta */

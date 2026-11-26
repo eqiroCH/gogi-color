@@ -37,6 +37,8 @@ body {
   font-size: var(--fs-base);
   line-height: var(--lh-base);
   font-weight: var(--fw-regular);
+  /* Fraunces (Überschriften) maximal weich; Archivo ignoriert diese Achsen */
+  font-variation-settings: 'SOFT' 100, 'WONK' 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

@@ -30,7 +30,22 @@
   transition:
     background-color var(--dur-fast) var(--ease),
     border-color var(--dur-fast) var(--ease),
-    color var(--dur-fast) var(--ease);
+    color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+
+/* Kleiner, verspielter Effekt: Buttons heben sich beim Hover leicht an */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn--primary:hover {
+    box-shadow: 0 10px 20px -12px rgba(122, 88, 27, 0.7);
+  }
+  .btn:active {
+    transform: translateY(0);
+  }
 }
 
 .btn svg {
@@ -355,6 +370,7 @@ a.chip:hover {
   content: '';
   width: 0.5rem;
   height: 0.5rem;
+  border-radius: 50%;
   background: var(--color-ocker);
 }
 
@@ -590,6 +606,7 @@ a.chip:hover {
   flex: none;
   width: 1.125rem;
   height: 1.125rem;
+  border-radius: 50%;
   background: var(--swatch, var(--color-ocker));
   box-shadow: inset 0 0 0 1px rgba(29, 36, 33, 0.12);
 }
