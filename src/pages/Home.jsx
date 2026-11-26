@@ -7,6 +7,7 @@ import CallToAction from '../components/CallToAction'
 import FAQ from '../components/FAQ'
 import ContactList from '../components/ContactList'
 import OfferForm from '../components/OfferForm'
+import BrushStroke from '../components/BrushStroke'
 import {
   IconArrowRight,
   IconArrowUpRight,
@@ -98,7 +99,7 @@ function Hero() {
             {titleRest && (
               <span className="home-hero__title-rest">
                 <span className="visually-hidden"> – </span>
-                <span className="brush">{brushed}</span>
+                <BrushStroke>{brushed}</BrushStroke>
                 {afterBrush.length > 0 && `, ${afterBrush.join(', ')}`}
               </span>
             )}

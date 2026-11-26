@@ -424,7 +424,7 @@ Serif (`--fs-h3`), Absätze mit 1em Abstand, Links unterstrichen. Max. Zeilenlä
 - Eine Hauptaktion (Ocker) pro Bildschirm, sonst Sekundär-Buttons oder `.link-arrow`.
 - Kleintitel kurz (1–3 Wörter), Titel als ganze Aussage aus dem Content.
 - Haarlinien und Farbpunkte statt Schatten und Rahmen um alles.
-- Verspielte Akzente sparsam: ein Pinselstrich (`.brush`) nur im Startseiten-Titel, Buttons heben sich beim Hover um 2 px an.
+- Verspielte Akzente sparsam: ein gemalter Pinselstrich (`<BrushStroke>` in `src/components/BrushStroke.jsx`, mit Borstenspuren und trockenem Ende) nur im Startseiten-Titel. Er wird beim Laden wie ein Pinselzug mit ausgefranster Vorderkante aufgetragen. Buttons heben sich beim Hover um 2 px an.
 - Leere `site`-Felder immer prüfen (`site.phone && …`).
 - Auf 375 px prüfen: keine waagrechte Scrollbar, Touchziele mindestens 44 px, Text mindestens 15 px (Meta 13 px).
 - Überschriften-Hierarchie: eine `h1` (PageHeader), dann `h2` pro Abschnitt, `h3` in Karten.
