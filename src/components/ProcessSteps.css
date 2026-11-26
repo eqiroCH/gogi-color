@@ -1,0 +1,93 @@
+.process {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Mobil: senkrechte Linie mit Nummern links */
+.process__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  column-gap: var(--space-sm);
+  row-gap: 0.375rem;
+  padding-bottom: var(--space-lg);
+}
+
+.process__step:last-child {
+  padding-bottom: 0;
+}
+
+.process__step::before {
+  content: '';
+  position: absolute;
+  left: 1.125rem;
+  top: 2.75rem;
+  bottom: 0.75rem;
+  width: 1px;
+  background: var(--line);
+}
+
+.process__step:last-child::before {
+  display: none;
+}
+
+.process__num {
+  grid-row: span 2;
+  color: var(--accent-text);
+  font-family: var(--font-serif);
+  font-size: 1.875rem;
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.process__title {
+  padding-top: 0.25rem;
+  font-size: var(--fs-h3);
+}
+
+.process__text {
+  color: var(--text-soft);
+}
+
+/* Ab 48em: Spalten mit Haarlinie oben */
+@media (min-width: 48em) {
+  .process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl) var(--grid-gap);
+  }
+  .process__step {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+    padding: var(--space-md) 0 0;
+    border-top: 1px solid var(--line);
+  }
+  .process__step::before {
+    display: none;
+  }
+  .process__step::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 2.5rem;
+    height: 3px;
+    background: var(--color-ocker);
+  }
+  .process__num {
+    grid-row: auto;
+    margin-bottom: var(--space-xs);
+    font-size: clamp(2.25rem, 1.6rem + 1.6vw, 3.25rem);
+  }
+  .process__title {
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 64em) {
+  .process {
+    grid-template-columns: repeat(var(--steps, 4), minmax(0, 1fr));
+  }
+}

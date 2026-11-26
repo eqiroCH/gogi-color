@@ -1,10 +1,25 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
+import { createRoot, hydrateRoot } from 'react-dom/client'
+// Schriften (selbst gehostet über @fontsource) und globale Styles hier importieren
+// Fraunces mit «SOFT»-Achse: weiche, freundliche Serifen für Überschriften
+import '@fontsource-variable/fraunces/soft.css'
+import '@fontsource-variable/archivo'
+import './styles/index.css'
 import App from './App.jsx'
+import { routes, notFound, normalizePath } from './routes'
 
-createRoot(document.getElementById('root')).render(
+const path = normalizePath(window.location.pathname)
+const root = document.getElementById('root')
+const app = (
   <StrictMode>
-    <App />
-  </StrictMode>,
+    <App path={path} />
+  </StrictMode>
 )
+
+if (root.hasChildNodes()) {
+  hydrateRoot(root, app)
+} else {
+  // Dev-Server: kein vorgerendertes HTML, daher Titel hier setzen
+  document.title = (routes[path] ?? notFound).title
+  createRoot(root).render(app)
+}

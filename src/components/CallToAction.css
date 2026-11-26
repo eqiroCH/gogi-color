@@ -1,29 +1,58 @@
-.cta {
-  padding: 2.8rem 0;
-  background: var(--dark);
-  color: var(--white);
+.cta-band__panel {
+  position: relative;
+  display: grid;
+  gap: var(--space-lg);
+  padding: clamp(1.75rem, 1.1rem + 3vw, 4rem);
+  padding-right: calc(clamp(1.75rem, 1.1rem + 3vw, 4rem) + 0.75rem);
+  overflow: hidden;
+  background: var(--color-tanne);
+  border-radius: var(--radius-md);
 }
 
-.cta-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+/* Farbtonkarte am rechten Rand */
+.cta-band__panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 0.75rem;
+  background: linear-gradient(
+    to bottom,
+    var(--color-ocker-light) 0 33.33%,
+    var(--color-ocker) 33.33% 66.66%,
+    #8e6524 66.66% 100%
+  );
 }
 
-.cta h2 {
-  color: var(--white);
-  font-size: 1.6rem;
-  margin-bottom: 0.3rem;
+.cta-band__text {
+  display: grid;
+  gap: var(--space-sm);
 }
 
-.cta p {
-  color: rgba(255, 255, 255, 0.75);
+.cta-band__title {
+  max-width: 18ch;
+  font-size: var(--fs-h2);
 }
 
-.cta-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
+.cta-band__lead {
+  max-width: 44ch;
+  color: var(--text-soft);
+  font-size: var(--fs-lead);
+}
+
+.cta-band__actions .btn {
+  white-space: normal;
+}
+
+@media (min-width: 64em) {
+  .cta-band__panel {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-2xl);
+  }
+  .cta-band__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

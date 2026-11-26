@@ -1,15 +1,33 @@
+// Platzhalter-Wortmarke «Gogi Color». Das echte Logo (goldener Schriftzug) liegt
+// noch nicht als Datei vor. Zum Austauschen: SVG/PNG nach public/ legen und hier
+// den Inhalt durch <img src="/logo.svg" alt="" width=… height=…> ersetzen –
+// Header und Footer brauchen keine Änderung.
+//
+// Props:
+//   tagline  – Unterzeile «Malergeschäft Zürich» zeigen (Standard: true)
+//   className
+// Farben folgen dem Kontext: auf .on-dark automatisch hell.
 import './Logo.css'
 
-function Logo({ light = false }) {
+export function LogoMark({ className = '' }) {
+  // Farbtonkarte: ein Ockerton in drei Nuancen
   return (
-    <span className={`logo ${light ? 'logo-light' : ''}`}>
-      <span className="logo-mark" aria-hidden="true">G</span>
-      <span className="logo-text">
-        <strong>Gogi <em>Color</em></strong>
-        <small>Malergeschäft Zürich</small>
+    <svg className={`logo__mark ${className}`} viewBox="0 0 22 32" aria-hidden="true" focusable="false">
+      <rect width="22" height="11" fill="#e7c98a" />
+      <rect y="10.5" width="22" height="11" fill="#c8963e" />
+      <rect y="21" width="22" height="11" fill="#8e6524" />
+    </svg>
+  )
+}
+
+export default function Logo({ tagline = true, className = '' }) {
+  return (
+    <span className={`logo ${className}`}>
+      <LogoMark />
+      <span className="logo__text">
+        <span className="logo__name">Gogi Color</span>
+        {tagline && <span className="logo__tagline">Malergeschäft Zürich</span>}
       </span>
     </span>
   )
 }
-
-export default Logo

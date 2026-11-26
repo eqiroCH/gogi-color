@@ -1,60 +1,51 @@
-import { useState } from 'react'
+// Häufige Fragen als Akkordeon (<details>/<summary>, funktioniert ohne JS).
+// Props:
+//   items    – [{ q, a }] (Pflicht)
+//   title    – Standard: «Häufige Fragen» (content/home.js → faqIntro)
+//   lead     – Standard: faqIntro.lead
+//   eyebrow  – optional
+//   id       – Anker, Standard 'faq'
+//   variant  – Section-Hintergrund ('default' | 'alt' | 'paper')
+import { Section, SectionHeader } from './Section'
+import { IconMail, IconPlus } from './Icons'
+import { faqIntro } from '../content/home'
+import { site } from '../site'
+import { typo } from './typo'
 import './FAQ.css'
 
-const items = [
-  {
-    q: 'In welchem Gebiet arbeiten Sie?',
-    a: 'Hauptsächlich in der Stadt Zürich und Umgebung. Für grössere Aufträge kommen wir auch weiter – fragen Sie einfach an.',
-  },
-  {
-    q: 'Wie erhalte ich eine Offerte?',
-    a: 'Schreiben Sie uns an info@gogicolor.ch oder über das Kontaktformular. Mit Adresse, ungefährer Fläche und ein paar Fotos geht es am schnellsten.',
-  },
-  {
-    q: 'Muss ich die Möbel selbst wegräumen?',
-    a: 'Kleinere Gegenstände bitte wegräumen. Grosse Möbel rücken wir zusammen und decken sie ab – genauso wie Böden und Fenster.',
-  },
-  {
-    q: 'Welche Farben verwenden Sie?',
-    a: 'Hochwertige Markenfarben, passend zu Untergrund und Raum – zum Beispiel scheuerbeständig in Küche und Gang, wetterfest für Fassaden.',
-  },
-  {
-    q: 'Wie lange dauern die Arbeiten?',
-    a: 'Ein Zimmer ist oft in einem Tag erledigt, eine ganze Wohnung in wenigen Tagen. Die genaue Dauer steht in Ihrer Offerte.',
-  },
-  {
-    q: 'Arbeiten Sie auch für Verwaltungen und Firmen?',
-    a: 'Ja – Mieterwechsel, Treppenhäuser, Büros und Läden. Termine stimmen wir auf Übergaben und Öffnungszeiten ab.',
-  },
-]
-
-function FAQ() {
-  const [open, setOpen] = useState(0)
-
+export default function FAQ({ items, title = faqIntro.title, lead = faqIntro.lead, eyebrow, id = 'faq', variant = 'default' }) {
   return (
-    <section id="faq" className="section section-grey">
-      <div className="container faq-wrap">
-        <div className="section-head">
-          <h2 className="section-title">Häufige Fragen</h2>
+    <Section id={id} variant={variant} className="faq">
+      <div className="faq__layout">
+        <div className="faq__intro">
+          <SectionHeader eyebrow={eyebrow} title={title} lead={lead} />
+          <a className="faq__mail" href={`mailto:${site.email}`}>
+            <span className="faq__mail-icon">
+              <IconMail size={20} />
+            </span>
+            <span>
+              <span className="faq__mail-label">Frage per E-Mail</span>
+              <span className="faq__mail-value">{site.email}</span>
+            </span>
+          </a>
         </div>
 
-        <div className="faq-list">
-          {items.map((item, index) => {
-            const isOpen = open === index
-            return (
-              <article key={item.q} className={`faq-item ${isOpen ? 'is-open' : ''}`}>
-                <button onClick={() => setOpen(isOpen ? -1 : index)} aria-expanded={isOpen}>
-                  <span>{item.q}</span>
-                  <i aria-hidden="true">{isOpen ? '–' : '+'}</i>
-                </button>
-                {isOpen && <p className="faq-answer">{item.a}</p>}
-              </article>
-            )
-          })}
+        <div className="faq__list">
+          {items.map((item) => (
+            <details key={item.q} className="faq__item">
+              <summary className="faq__question">
+                <span>{item.q}</span>
+                <span className="faq__icon">
+                  <IconPlus size={20} />
+                </span>
+              </summary>
+              <div className="faq__answer">
+                <p>{typo(item.a)}</p>
+              </div>
+            </details>
+          ))}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }
-
-export default FAQ

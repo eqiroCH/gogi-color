@@ -1,0 +1,352 @@
+/* ==========================================================================
+   Formular-Grundlagen: Felder, Auswahlkacheln, Upload, Schrittanzeige.
+   Gedacht für das Offerte-Formular (components/OfferForm.jsx) und alle
+   weiteren Formulare. Schriftgrösse in Feldern ≥ 16px (kein Zoom auf iOS).
+   ========================================================================== */
+
+.field {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.field__label,
+.form-legend {
+  color: var(--heading);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: 1.35;
+}
+
+.form-legend {
+  margin-bottom: 0.625rem;
+  padding: 0;
+}
+
+.field__hint {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.field__error,
+.form-error {
+  color: var(--color-error);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.875rem;
+  background: var(--color-papier);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--color-tinte);
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #6a6f6a;
+}
+
+.input:hover,
+.select:hover,
+.textarea:hover {
+  border-color: var(--color-tinte);
+}
+
+.input:focus-visible,
+.select:focus-visible,
+.textarea:focus-visible {
+  border-color: var(--color-tinte);
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+
+.input[aria-invalid='true'],
+.textarea[aria-invalid='true'] {
+  border-color: var(--color-error);
+}
+
+.textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.select {
+  appearance: none;
+  padding-right: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6' fill='none' stroke='%231d2421' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-position: right 0.875rem center;
+  background-size: 1.125rem;
+  background-repeat: no-repeat;
+}
+
+.form-row {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+@media (min-width: 40em) {
+  .form-row--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- Auswahlkacheln (Checkbox/Radio) -------------------------------------- */
+/* <div class="choice-grid">
+     <label class="choice"><input type="checkbox" …><span class="choice__box">Innenmalerei</span></label>
+   </div> */
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+  gap: 0.5rem;
+}
+
+.choice-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.choice {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.choice > input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.choice__box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 0.875rem;
+  background: var(--color-papier);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--color-tinte);
+  font-weight: var(--fw-medium);
+  line-height: 1.3;
+  transition: border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+}
+
+.choice__box::before {
+  content: '';
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 1.5px solid var(--color-line-strong);
+  border-radius: var(--radius-xs);
+  background: var(--color-papier) center / 100% no-repeat;
+}
+
+.choice > input[type='radio'] + .choice__box::before {
+  border-radius: 50%;
+}
+
+.choice:hover .choice__box {
+  border-color: var(--color-tinte);
+}
+
+.choice > input:checked + .choice__box {
+  background: var(--color-ocker-pale);
+  border-color: var(--color-tinte);
+  box-shadow: inset 0 0 0 1px var(--color-tinte);
+}
+
+.choice > input:checked + .choice__box::before {
+  border-color: var(--color-tinte);
+  background-color: var(--color-ocker);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.4l3 3 6-6.4' fill='none' stroke='%231d2421' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.choice > input[type='radio']:checked + .choice__box::before {
+  background-image: none;
+  box-shadow: inset 0 0 0 3px var(--color-papier);
+  background-color: var(--color-tinte);
+}
+
+.choice > input:focus-visible + .choice__box {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Kachel mit Zusatzzeile */
+.choice__text {
+  display: grid;
+  gap: 0.125rem;
+}
+
+.choice__meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: var(--fw-regular);
+}
+
+/* ---- Foto-Upload ---------------------------------------------------------- */
+.upload {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.375rem;
+  padding: var(--space-md);
+  background: var(--color-kalk);
+  border: 1.5px dashed var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-soft);
+  text-align: center;
+  cursor: pointer;
+}
+
+.upload:hover {
+  border-color: var(--color-tinte);
+}
+
+.upload > input[type='file'] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload:focus-within {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.upload svg {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--color-tanne);
+}
+
+.upload__title {
+  color: var(--heading);
+  font-weight: var(--fw-semibold);
+}
+
+.upload-previews {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.upload-previews li {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-sand);
+}
+
+.upload-previews img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Schrittanzeige ------------------------------------------------------- */
+/* <ol class="stepper"><li class="is-done|is-current"><span>1</span> Leistung</li>…</ol> */
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(var(--steps, 4), minmax(0, 1fr));
+  gap: 0.375rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.stepper > li {
+  display: grid;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.04em;
+  counter-increment: step;
+}
+
+.stepper > li::before {
+  content: '';
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-line);
+}
+
+.stepper > li.is-done::before,
+.stepper > li.is-current::before {
+  background: var(--color-ocker);
+}
+
+.stepper > li.is-current {
+  color: var(--heading);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--line);
+}
+
+.form-actions > .btn--primary {
+  margin-left: auto;
+}
+
+/* Erfolgs-/Statusmeldung */
+.form-status {
+  padding: var(--space-md);
+  background: var(--color-papier);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--color-success);
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Formular-Tafel ------------------------------------------------------- */
+/* Äusserer Rahmen des Offerte-Formulars (Startseite #kontakt und /offerte).
+   Füllt die Breite seines Containers; Platz ist für Kacheln in 2–3 Spalten. */
+.form-panel {
+  display: grid;
+  gap: var(--space-lg);
+  padding: clamp(1.25rem, 0.85rem + 1.8vw, 2.5rem);
+  background: var(--color-papier);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-1);
+  color: var(--color-tinte);
+  --bg: var(--color-papier);
+  --surface: var(--color-papier);
+}
+
+.form-panel__title {
+  font-size: var(--fs-h3);
+}

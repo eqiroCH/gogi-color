@@ -1,0 +1,316 @@
+/* ==========================================================================
+   Offerte-Formular (components/OfferForm.jsx). Baut auf forms.css auf
+   (.form-panel, .field, .choice, .upload, .stepper, .form-actions …) und ergänzt
+   nur, was das mehrstufige Formular zusätzlich braucht.
+
+   Die Anordnung richtet sich nach der Breite des Formulars (Container Query
+   «offer-form»), weil es in verschieden breiten Spalten steht: Startseite #kontakt
+   (ca. 430–570 px Innenbreite) und /offerte (ca. 480–630 px), mobil ca. 290 px.
+   ========================================================================== */
+
+.offer-form {
+  container: offer-form / inline-size;
+}
+
+.offer-form__form {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+/* ---- Kopf: Schrittleiste + Überschrift mit Fortschritt -------------------- */
+.offer-form__head {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.offer-form__title {
+  display: grid;
+  gap: var(--space-2xs);
+  font-size: var(--fs-h3);
+}
+
+.offer-form__progress {
+  color: var(--accent-text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+/* ---- Felder eines Schritts ------------------------------------------------ */
+.offer-form__step {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.offer-form__group {
+  display: block;
+}
+
+.offer-form__legend-note {
+  color: var(--text-muted);
+  font-weight: var(--fw-regular);
+}
+
+/* Eingabefelder in einer Reihe unten bündig, auch wenn ein Label umbricht */
+.offer-form .offer-form__row {
+  align-items: end;
+}
+
+/* Kurze Eingabe (PLZ/Ort) so breit wie eine Spalte der Reihe darüber */
+@media (min-width: 40em) {
+  .offer-form__field--half {
+    max-width: calc((100% - var(--space-sm)) / 2);
+  }
+}
+
+.offer-form__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.625rem;
+}
+
+.offer-form__error svg {
+  margin-top: 0.15em;
+}
+
+/* Rahmen erst nach einer Eingabe rot, nicht schon beim Laden */
+.offer-form .input:user-invalid {
+  border-color: var(--color-error);
+}
+
+.offer-form .textarea:user-invalid {
+  border-color: var(--color-error);
+}
+
+/* Datum: iOS zentriert den Wert und lässt leere Felder zusammenfallen */
+.offer-form__date {
+  display: block;
+}
+
+.offer-form__date::-webkit-date-and-time-value {
+  min-height: 1.4em;
+  text-align: left;
+}
+
+/* ---- Auswahlkacheln ------------------------------------------------------- */
+/* Leistungen: 1 Spalte, ab 25rem Formularbreite 2 Spalten (nie 3, damit die
+   langen Bezeichnungen ruhig in einer Zeile stehen) */
+.offer-form .offer-form__services {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@container offer-form (min-width: 25rem) {
+  .offer-form .offer-form__services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Einfachauswahl mit kurzen Optionen (Decken, Kontaktweg): gleich breit in einer Reihe;
+   was nicht passt, rutscht in die nächste Zeile und nimmt sie ganz ein. Ab 30rem
+   Formularbreite höchstens 12rem breit. */
+.offer-form__inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.offer-form__inline > .choice {
+  flex: 1 1 0;
+}
+
+.offer-form__inline .choice__box {
+  white-space: nowrap;
+}
+
+@container offer-form (min-width: 30rem) {
+  .offer-form__inline > .choice {
+    max-width: 12rem;
+  }
+}
+
+/* --fill (Kundentyp, längere Optionen): schmal untereinander, ab 26rem immer in einer
+   Reihe über die ganze Breite; Kacheln so breit wie ihr Text, umbrechen nur, wenn es
+   nicht anders geht (kein 2 + 1) */
+.offer-form .offer-form__inline--fill > .choice {
+  flex-basis: 100%;
+  max-width: none;
+}
+
+@container offer-form (min-width: 26rem) {
+  .offer-form .offer-form__inline--fill {
+    flex-wrap: nowrap;
+  }
+  .offer-form .offer-form__inline--fill > .choice {
+    flex: 1 1 auto;
+  }
+  .offer-form .offer-form__inline--fill .choice__box {
+    white-space: normal;
+  }
+}
+
+/* ---- Fotos ---------------------------------------------------------------- */
+.offer-form__photos {
+  gap: var(--space-2xs);
+}
+
+.offer-form__photos > .field__label {
+  margin-bottom: 0.125rem;
+}
+
+.offer-form__upload {
+  padding-block: var(--space-md);
+}
+
+.offer-form__upload-meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.offer-form__upload-full {
+  color: var(--text-soft);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+/* Entfernen-Knopf: 44 px Trefferfläche, sichtbar als kleines Quadrat in der Ecke */
+.offer-form__photo-remove {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--color-kalk);
+}
+
+.offer-form__photo-remove-icon {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  background: var(--color-tinte);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--dur-fast) var(--ease);
+}
+
+.offer-form__photo-remove:hover .offer-form__photo-remove-icon {
+  background: var(--color-error);
+}
+
+.offer-form__photo-remove:focus-visible {
+  outline: none;
+}
+
+.offer-form__photo-remove:focus-visible .offer-form__photo-remove-icon {
+  outline: 3px solid var(--color-ocker);
+  outline-offset: 1px;
+}
+
+/* ---- Datenschutz, Meldungen ----------------------------------------------- */
+.offer-form__privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  margin-top: var(--space-2xs);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.offer-form__privacy svg {
+  margin-top: 0.05em;
+  color: var(--color-tanne);
+}
+
+.offer-form__privacy a {
+  color: var(--text);
+  text-decoration-color: var(--color-line-strong);
+}
+
+.offer-form__privacy a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Fehler beim Senden / Fotos zu gross: helle Fläche mit rotem Rand links */
+.offer-form__alert {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3xs);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-kalk);
+  border-left: 4px solid var(--color-error);
+  border-radius: var(--radius-sm);
+}
+
+.offer-form__mail-link svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ---- Knöpfe ---------------------------------------------------------------- */
+/* Passen beide nicht in eine Zeile, steht «Senden» oben in voller Breite, «Zurück» darunter */
+.offer-form .offer-form__actions {
+  flex-wrap: wrap-reverse;
+  gap: var(--space-xs);
+}
+
+.offer-form .offer-form__back {
+  padding-inline: 1.125rem 1.375rem;
+}
+
+.offer-form .offer-form__back-icon {
+  transform: scaleX(-1);
+}
+
+.offer-form .offer-form__back:hover .offer-form__back-icon {
+  transform: scaleX(-1) translateX(3px);
+}
+
+.offer-form__next {
+  flex: 1 1 auto;
+}
+
+@container offer-form (min-width: 30rem) {
+  .offer-form__next {
+    flex: 0 0 auto;
+  }
+}
+
+/* ---- Erfolg ---------------------------------------------------------------- */
+.offer-form__success {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-xs);
+}
+
+.offer-form__success-icon {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  margin-bottom: var(--space-3xs);
+  background: var(--color-ocker);
+  border-radius: var(--radius-sm);
+  color: var(--color-tinte);
+}
+
+.offer-form__success-title {
+  font-size: var(--fs-h3);
+}
+
+.offer-form__success p {
+  max-width: 34em;
+  color: var(--text-soft);
+}
+
+.offer-form__home-link {
+  justify-self: start;
+}

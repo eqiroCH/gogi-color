@@ -1,0 +1,657 @@
+/* ==========================================================================
+   Gemeinsame Bausteine als Klassen: Buttons, Links, Karten, Listen, Tabellen,
+   Info-Box, Medien, Prosa. Komponenten-spezifisches CSS liegt neben der
+   jeweiligen Komponente in src/components/.
+   ========================================================================== */
+
+/* ---- Buttons -------------------------------------------------------------- */
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--heading);
+  --btn-border: var(--heading);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.375rem;
+  border: 1.5px solid var(--btn-border);
+  border-radius: var(--radius-pill);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+
+/* Kleiner, verspielter Effekt: Buttons heben sich beim Hover leicht an */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn--primary:hover {
+    box-shadow: 0 10px 20px -12px rgba(122, 88, 27, 0.7);
+  }
+  .btn:active {
+    transform: translateY(0);
+  }
+}
+
+.btn svg {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  transition: transform var(--dur) var(--ease);
+}
+
+.btn:hover .icon-arrow,
+.link-arrow:hover .icon-arrow {
+  transform: translateX(3px);
+}
+
+/* Primär: Ocker mit Tinte – die eine Hauptaktion pro Ansicht («Offerte anfragen») */
+.btn--primary {
+  --btn-bg: var(--color-ocker);
+  --btn-fg: var(--color-tinte);
+  --btn-border: var(--color-ocker);
+}
+
+.btn--primary:hover {
+  --btn-bg: var(--color-ocker-hover);
+  --btn-border: var(--color-ocker-hover);
+}
+
+/* Sekundär: Kontur. Passt sich in .on-dark automatisch an (helle Kontur) */
+.btn--secondary:hover {
+  --btn-bg: var(--heading);
+  --btn-fg: var(--bg);
+}
+
+/* Auf dunklem Grund ausserhalb von .on-dark: helle Kontur */
+.btn--on-dark {
+  --btn-fg: var(--color-kalk);
+  --btn-border: rgba(245, 242, 235, 0.6);
+}
+
+.btn--on-dark:hover {
+  --btn-bg: var(--color-kalk);
+  --btn-fg: var(--color-tanne);
+  --btn-border: var(--color-kalk);
+}
+
+/* Ruhige Vollfläche in Tannengrün (z. B. «Weiter» neben primärem Senden) */
+.btn--dark {
+  --btn-bg: var(--color-tanne);
+  --btn-fg: var(--color-kalk);
+  --btn-border: var(--color-tanne);
+}
+
+.btn--dark:hover {
+  --btn-bg: var(--color-tanne-deep);
+  --btn-border: var(--color-tanne-deep);
+}
+
+.btn--sm {
+  min-height: var(--tap);
+  padding: 0.5rem 1rem;
+  font-size: var(--fs-sm);
+}
+
+.btn--lg {
+  min-height: 3.5rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 1.0625rem;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* Quadratischer Icon-Button (immer mit aria-label) */
+.btn--icon {
+  width: 3rem;
+  padding: 0;
+}
+
+.btn[disabled],
+.btn[aria-disabled='true'] {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Reihe von Buttons */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Unter 30em die Buttons volle Breite (z. B. Kopfbereiche) */
+@media (max-width: 29.99em) {
+  .actions--stack > .btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* ---- Textlink mit Pfeil --------------------------------------------------- */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--tap);
+  color: var(--heading);
+  font-weight: var(--fw-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+
+.link-arrow:hover {
+  text-decoration-color: currentColor;
+}
+
+.link-arrow svg {
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  transition: transform var(--dur) var(--ease);
+}
+
+/* ---- Karten --------------------------------------------------------------- */
+.card {
+  position: relative;
+  padding: clamp(1.25rem, 0.95rem + 1.2vw, 2rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.card > * + * {
+  margin-top: var(--space-xs);
+}
+
+.card__title {
+  font-size: var(--fs-h3);
+}
+
+.card--flat {
+  background: transparent;
+}
+
+/* Ganze Karte klickbar: Link im Titel bekommt .stretched-link */
+.stretched-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ---- Raster nummerierter Feature-Karten ----------------------------------- */
+/* <ol class="feature-grid"><li class="feature-card"><h3>…</h3><p>…</p></li></ol>
+   Nummern (01, 02 …) kommen automatisch per CSS-Zähler. */
+.feature-grid {
+  display: grid;
+  gap: 0 var(--grid-gap);
+  counter-reset: feature;
+}
+
+@media (min-width: 40em) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64em) {
+  .feature-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .feature-grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .feature-grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.feature-card {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2xs);
+  padding: var(--space-md) 0 var(--space-lg);
+  border-top: 1px solid var(--line);
+  counter-increment: feature;
+}
+
+/* Ockerfarbenes Stück auf der Haarlinie – wie ein Streifen Abdeckband */
+.feature-card::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--color-ocker);
+}
+
+.feature-card::before {
+  content: counter(feature, decimal-leading-zero);
+  color: var(--accent-text);
+  font-family: var(--font-serif);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.feature-card h3 {
+  font-size: var(--fs-h3);
+}
+
+.feature-card p {
+  color: var(--text-soft);
+}
+
+/* Ohne Nummern, nur Linie + Titel */
+.feature-grid--plain .feature-card::before {
+  content: none;
+}
+
+/* ---- Check-Liste ---------------------------------------------------------- */
+/* <ul class="check-list"><li>…</li></ul> – Farbmuster-Quadrat mit Haken */
+.check-list {
+  display: grid;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list > li {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.check-list > li::before,
+.check-list > li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.check-list > li::before {
+  background: var(--color-ocker);
+  border-radius: var(--radius-xs);
+}
+
+.check-list > li::after {
+  background: var(--color-tinte);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.4l3 3 6-6.4' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.4l3 3 6-6.4' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+}
+
+/* Mit Haarlinien zwischen den Punkten */
+.check-list--lines {
+  gap: 0;
+}
+
+.check-list--lines > li {
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.check-list--lines > li::before,
+.check-list--lines > li::after {
+  top: calc(0.75rem + 0.2em);
+}
+
+/* Nebeneinander, wo Platz ist */
+.check-list--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem 1.75rem;
+}
+
+/* ---- Chip-/Ortsliste ------------------------------------------------------ */
+/* <ul class="chip-list"><li class="chip">Adliswil</li></ul> */
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.25rem;
+  padding: 0.375rem 0.875rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+a.chip {
+  min-height: var(--tap);
+}
+
+a.chip:hover {
+  border-color: var(--heading);
+}
+
+/* Chip mit kleinem Farbmuster davor */
+.chip--swatch::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-ocker);
+}
+
+/* ---- Nummerierte Kacheln (z. B. Stadtkreise 1–12) ------------------------- */
+/* <ol class="number-tiles"><li class="number-tile">
+     <span class="number-tile__num">4</span>
+     <span class="number-tile__label">Aussersihl</span>
+     <span class="number-tile__meta">Werd, Langstrasse, Hard</span></li></ol> */
+.number-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+@media (min-width: 36em) {
+  .number-tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64em) {
+  .number-tiles {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.number-tile {
+  display: grid;
+  align-content: start;
+  gap: 0.25rem;
+  padding: 0.875rem 1rem 1rem;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.number-tile__num {
+  color: var(--accent-text);
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: var(--fw-semibold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.number-tile__label {
+  color: var(--heading);
+  font-weight: var(--fw-semibold);
+  line-height: 1.3;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+.number-tile__meta {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+}
+
+/* ---- Tabelle (Richtwerte) ------------------------------------------------- */
+/* <div class="table-wrap"><table class="data-table">…</table></div>
+   Hinweise zur Zeile als <span class="data-table__note"> in der ersten Zelle. */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table caption {
+  margin-bottom: var(--space-sm);
+  color: var(--heading);
+  font-family: var(--font-serif);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.data-table thead th {
+  padding-block: 0 0.625rem;
+  border-bottom: 1.5px solid var(--heading);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.data-table tbody th {
+  padding-right: var(--space-sm);
+  color: var(--heading);
+  font-weight: var(--fw-semibold);
+}
+
+.data-table td,
+.data-table thead th:last-child {
+  text-align: right;
+}
+
+.data-table td {
+  color: var(--heading);
+  font-weight: var(--fw-medium);
+}
+
+.data-table__note {
+  display: block;
+  margin-top: 0.125rem;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+}
+
+/* ---- Quellenangabe / Hinweis unter Tabellen ------------------------------- */
+.source-note {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.source-note a {
+  color: inherit;
+}
+
+.source-note strong {
+  color: var(--text-soft);
+  font-weight: var(--fw-semibold);
+}
+
+/* ---- Info-Box (mit Quellenangabe) ----------------------------------------- */
+/* <aside class="info-box"><h3 class="info-box__title">…</h3><p>…</p>
+     <p class="info-box__source">Quelle: <a …>…</a></p></aside> */
+.info-box {
+  position: relative;
+  padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+  padding-top: calc(clamp(1.25rem, 1rem + 1vw, 2rem) + 4px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Ockerband oben – wie der Farbstreifen einer Musterkarte */
+.info-box::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: var(--color-ocker);
+}
+
+.info-box > * + * {
+  margin-top: var(--space-xs);
+}
+
+.info-box__title {
+  font-size: var(--fs-h3);
+}
+
+.info-box p:not(.eyebrow) {
+  color: var(--text-soft);
+}
+
+.info-box__source {
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--line);
+  color: var(--text-muted) !important;
+  font-size: 0.875rem;
+}
+
+.info-box__source a {
+  color: inherit;
+}
+
+/* Getönte Variante auf hellem Grund */
+.info-box--tinted {
+  background: var(--color-ocker-pale);
+  border-color: transparent;
+}
+
+/* ---- Medien / Bilder ------------------------------------------------------ */
+.media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-sand-dark);
+}
+
+.media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media--4x3 { aspect-ratio: 4 / 3; }
+.media--3x2 { aspect-ratio: 3 / 2; }
+.media--1x1 { aspect-ratio: 1; }
+.media--4x5 { aspect-ratio: 4 / 5; }
+.media--16x9 { aspect-ratio: 16 / 9; }
+
+/* Farbmuster-Etikett: weisser Streifen mit Farbquadrat und Beschriftung */
+.swatch-label {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 1.125rem 0.625rem 0.875rem;
+  background: var(--color-papier);
+  border-radius: var(--radius-pill);
+  color: var(--color-tinte);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: 1.25;
+}
+
+.swatch-label::before {
+  content: '';
+  flex: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  background: var(--swatch, var(--color-ocker));
+  box-shadow: inset 0 0 0 1px rgba(29, 36, 33, 0.12);
+}
+
+/* ---- Prosa (Rechtstexte, längere Texte) ----------------------------------- */
+.prose {
+  max-width: var(--measure);
+  color: var(--text);
+}
+
+.prose > * + *,
+.prose section > * + * {
+  margin-top: 1em;
+}
+
+.prose section + section {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--line);
+}
+
+.prose h2 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+}
+
+.prose h3 {
+  margin-top: 1.5em;
+  font-size: var(--fs-h4);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25rem;
+}
+
+.prose li + li {
+  margin-top: 0.375em;
+}
+
+.prose a {
+  color: var(--link);
+  overflow-wrap: anywhere;
+}
+
+.prose strong {
+  color: var(--heading);
+}

@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Layout: Container, Abschnitte, Abschnittskopf, Raster
+   ========================================================================== */
+
+/* ---- Container ------------------------------------------------------------ */
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--wide {
+  max-width: calc(var(--container-wide) + 2 * var(--gutter));
+}
+
+.container--narrow {
+  max-width: calc(var(--container-narrow) + 2 * var(--gutter));
+}
+
+/* ---- Abschnitte ----------------------------------------------------------- */
+.section {
+  position: relative;
+  padding-block: var(--section-y);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.section--tight {
+  padding-block: var(--section-y-tight);
+}
+
+/* Varianten (Hintergrund). Aufeinanderfolgende Abschnitte abwechseln:
+   kalk → sand → kalk … und höchstens einen dunklen Abschnitt pro Bildschirmhöhe. */
+.section--default {
+  --bg: var(--color-kalk);
+}
+
+.section--alt {
+  --bg: var(--color-sand);
+}
+
+.section--paper {
+  --bg: var(--color-papier);
+}
+
+.section--dark {
+  --bg: var(--color-tanne);
+}
+
+/* Zwei gleichfarbige Abschnitte hintereinander: Haarlinie dazwischen */
+.section--rule {
+  border-top: 1px solid var(--color-line);
+}
+
+/* Ohne Abstand oben (z. B. direkt nach PageHeader, der schon Luft hat) */
+.section--flush-top {
+  padding-top: 0;
+}
+
+/* ---- Kleintitel («Eyebrow») mit Farbpunkt -------------------------------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0;
+  color: var(--accent-text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  line-height: 1.3;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: var(--color-ocker);
+}
+
+/* ---- Lead ----------------------------------------------------------------- */
+.lead {
+  max-width: 40em;
+  color: var(--text-soft);
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+}
+
+/* ---- Abschnittskopf ------------------------------------------------------- */
+.section-header {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 48rem;
+  margin-bottom: var(--stack-header);
+}
+
+.section-header > .eyebrow {
+  margin-bottom: var(--space-3xs);
+}
+
+.section-header__title {
+  max-width: 22ch;
+}
+
+.section-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  margin-top: var(--space-2xs);
+}
+
+.section-header--center {
+  justify-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-header--center .section-header__title {
+  margin-inline: auto;
+}
+
+/* Split: Kleintitel + Titel links, Lead rechts (ab 64em) */
+@media (min-width: 64em) {
+  .section-header--split {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: var(--space-2xl);
+    align-items: end;
+    max-width: none;
+  }
+  .section-header--split > .eyebrow {
+    grid-column: 1 / -1;
+  }
+  .section-header--split .lead {
+    padding-bottom: 0.35em;
+  }
+  .section-header--split .section-header__actions {
+    grid-column: 2;
+  }
+}
+
+.section-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--space-lg);
+  margin-top: var(--stack-header);
+}
+
+/* ---- Raster --------------------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: var(--grid-gap);
+}
+
+@media (min-width: 48em) {
+  .grid--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64em) {
+  .grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Automatisch: so viele Spalten wie Platz (min. 16rem) */
+.grid--auto {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+}
+
+/* ---- Split: Text + Medium nebeneinander (ab 64em) ------------------------- */
+.split {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+@media (min-width: 64em) {
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-3xl);
+  }
+  .split--text-wide {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+  .split--media-wide {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  }
+  .split--top {
+    align-items: start;
+  }
+  /* Medium links, Text rechts – Reihenfolge im HTML bleibt Text → Medium */
+  .split--reverse > :first-child {
+    order: 2;
+  }
+}

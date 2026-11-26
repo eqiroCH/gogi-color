@@ -2,54 +2,43 @@
 <html lang="de-CH">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#1d1d1b" />
-    <meta
-      name="description"
-      content="Gogi Color – Ihre Malerfirma in Zürich. Innenmalerei, Fassaden, Renovation, Spachtelarbeiten und Farbberatung. Sauber, pünktlich, fair."
-    />
-    <meta
-      name="keywords"
-      content="Maler Zürich, Malerfirma Zürich, Malergeschäft, Innenmalerei, Fassade streichen, Renovation, Spachteln, Farbberatung, Gogi Color"
-    />
-    <meta name="author" content="Gogi Color" />
-    <meta property="og:title" content="Gogi Color | Malerfirma Zürich" />
-    <meta
-      property="og:description"
-      content="Malerarbeiten in Zürich – innen, aussen, Renovation. Sauber, pünktlich, fair."
-    />
+    <!--app-head-->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#f5f2eb" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_CH" />
-    <meta property="og:url" content="https://gogicolor.ch" />
-    <meta
-      property="og:image"
-      content="https://images.unsplash.com/photo-1599619585752-c3edb42a414c?auto=format&fit=crop&w=1200&q=80"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Gogi Color | Malerfirma Zürich</title>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "HousePainter",
-        "name": "Gogi Color",
-        "url": "https://gogicolor.ch",
-        "email": "info@gogicolor.ch",
-        "description": "Malerfirma in Zürich für Innenmalerei, Fassaden, Renovation und Farbberatung.",
-        "areaServed": { "@type": "City", "name": "Zürich" },
-        "address": { "@type": "PostalAddress", "addressLocality": "Zürich", "addressCountry": "CH" },
-        "sameAs": ["https://www.instagram.com/gogi_color/"]
-      }
-    </script>
+    <meta property="og:site_name" content="Gogi Color" />
+    <meta property="og:image" content="https://gogicolor.ch/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Formulardefinition für Netlify Forms; das sichtbare Formular sendet per fetch an "offerte" -->
+    <form name="offerte" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="text" name="kundentyp" />
+      <input type="text" name="leistungen" />
+      <input type="text" name="objekt" />
+      <input type="text" name="groesse" />
+      <input type="text" name="decken" />
+      <input type="text" name="ort" />
+      <input type="text" name="termin" />
+      <input type="text" name="datum" />
+      <textarea name="nachricht"></textarea>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="telefon" />
+      <input type="text" name="kontaktweg" />
+      <input type="text" name="quelle" />
+      <input type="file" name="foto1" />
+      <input type="file" name="foto2" />
+      <input type="file" name="foto3" />
+      <input type="text" name="bot-field" />
+    </form>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

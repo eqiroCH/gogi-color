@@ -1,0 +1,103 @@
+/* Rechtstexte (/impressum, /datenschutz) – alle Klassen mit Präfix .legal-.
+   Baut auf .prose (components.css) auf und passt es nur über .legal-prose an.
+   Das Markup kommt ungestylt aus content/legal.jsx: <section><h2><p>. */
+
+/* ---- Abschnitte: Haarlinie mit Ockerstück (wie die Feature-Karten) --------- */
+.prose.legal-prose section {
+  position: relative;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--line);
+}
+
+.prose.legal-prose section::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--color-ocker);
+}
+
+.prose.legal-prose section + section {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+}
+
+.prose.legal-prose section > h2 + * {
+  margin-top: var(--space-xs);
+}
+
+@media (min-width: 48em) {
+  .prose.legal-prose section + section {
+    margin-top: var(--space-xl);
+  }
+}
+
+/* ---- Links: Ocker-Unterstreichung wie .link-arrow -------------------------- */
+.prose.legal-prose a {
+  font-weight: var(--fw-medium);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+}
+
+.prose.legal-prose a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Externe Links (öffnen in neuem Fenster): kleiner Pfeil nach rechts oben */
+.prose.legal-prose a[target='_blank']::after {
+  content: '';
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-left: 0.25em;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 17L17 7M8.5 7H17v8.5' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 17L17 7M8.5 7H17v8.5' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+}
+
+/* ---- Verweis auf den anderen Rechtstext ------------------------------------ */
+.legal-related {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--line);
+}
+
+/* ---- Ab 64em: Titel in der Randspalte links, Text rechts -------------------- */
+@media (min-width: 64em) {
+  .prose.legal-prose {
+    max-width: none;
+  }
+
+  .prose.legal-prose section {
+    display: flow-root;
+    padding-top: var(--space-lg);
+  }
+
+  .prose.legal-prose section + section {
+    padding-top: var(--space-lg);
+  }
+
+  .prose.legal-prose section > h2 {
+    float: left;
+    width: calc(100% / 3);
+    padding-right: var(--space-xl);
+  }
+
+  .prose.legal-prose section > :not(h2) {
+    max-width: var(--measure);
+    margin-left: calc(100% / 3);
+  }
+
+  .prose.legal-prose section > h2 + * {
+    margin-top: 0;
+  }
+
+  .legal-related {
+    padding-left: calc(100% / 3);
+  }
+}
