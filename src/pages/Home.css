@@ -41,39 +41,6 @@
   font-weight: 400;
 }
 
-/* Pinselstrich unter «saubere Arbeit» – kleiner verspielter Akzent */
-.brush {
-  position: relative;
-  isolation: isolate;
-  white-space: nowrap;
-}
-
-.brush::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  left: -0.08em;
-  right: -0.12em;
-  bottom: 0.12em;
-  height: 0.5em;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 40' preserveAspectRatio='none'%3E%3Cpath fill='%23e7c98a' d='M6 12C50 5 130 3 205 4s140 1 189 4c6 8 5 21-2 27-90 2-180 3-270 3S30 39 10 37C1 33-1 19 6 12Z'/%3E%3Cpath fill='%23c8963e' fill-opacity='.35' d='M26 30c95-4 205-6 348-4-95 4-205 6-348 8z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .brush::after {
-    animation: brush-in 0.9s var(--ease) 0.3s both;
-  }
-}
-
-@keyframes brush-in {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0 0 0 0);
-  }
-}
-
 .home-hero__lead {
   max-width: 34em;
 }
